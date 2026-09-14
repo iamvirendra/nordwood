@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Cream-led palette: quiet champagne details, charcoal structure, natural timber. */
+  --ink: #111111;
+  --ink-soft: #454942;
+  --forest: #373c38;
+  --forest-deep: #2c302e;
+  --paper: #f4f0e6;
+  --paper-light: #fbf8f1;
+  --sand: #e8d8b6;
+  --surface-muted: #eae4d8;
+  --clay: #e8d8b6;
+  --clay-dark: #776244;
+  --brass: #e8d8b6;
+  --brass-light: #f1e6d1;
+  --accent-ink: #776244;
+  --sage: #cbc7bc;
+  --muted: #68665e;
+  --muted-dark: #cbc7bc;
+  --on-dark: #f4f0e6;
+  --line: rgb(44 48 46 / 16%);
+  --line-strong: rgb(44 48 46 / 32%);
+  --line-light: rgb(244 240 230 / 20%);
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: 'Helvetica Neue', 'Avenir Next', Avenir, Arial, sans-serif;
+  --max-width: 1380px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brass-light);
+  color: var(--forest-deep);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--clay-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-soft);
+  border: 2px solid var(--paper);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clay);
+}
+
+:is(.home-hero, .home-cta, .woodcut-intro) :is(a, button):focus-visible { outline-color: var(--brass); }

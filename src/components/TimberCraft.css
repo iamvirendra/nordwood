@@ -1,0 +1,118 @@
+.timber-craft {
+  padding: clamp(72px, 8vw, 124px) max(6vw, calc((100vw - var(--max-width, 1380px)) / 2));
+  background: var(--paper-light, #fbf8f1);
+  color: var(--ink, #111);
+  overflow: hidden;
+}
+.timber-craft__heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-bottom: 52px; }
+.home .timber-craft .eyebrow { color: var(--accent-ink, #776244); font-size: 10px; letter-spacing: .2em; margin-bottom: 24px; }
+.timber-craft h2 { font: 400 clamp(38px, 4.5vw, 66px)/1.08 var(--serif); letter-spacing: -.035em; }
+.timber-craft h2 em { font-weight: 400; color: var(--accent-ink, #776244); }
+.timber-craft__intro { max-width: 295px; padding-bottom: 4px; }
+.timber-craft__intro p { color: var(--muted, #68665e); font-size: 13px; line-height: 1.9; }
+.timber-craft__intro > span { display: block; margin-top: 21px; font-size: 9px; text-transform: uppercase; letter-spacing: .13em; color: var(--forest, #2c302e); }
+.timber-craft__canvas { border-top: 1px solid var(--line, rgb(44 48 46 / .17)); border-bottom: 1px solid var(--line, rgb(44 48 46 / .17)); padding-inline: 20px; background: radial-gradient(ellipse at 78% 54%, rgb(232 216 182 / .28), transparent 48%), var(--paper, #f4f0e6); }
+.timber-craft__canvas-top, .timber-craft__canvas-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 9px; color: var(--muted, #68665e); }
+.timber-craft__canvas-top { padding-top: 21px; letter-spacing: .15em; text-transform: uppercase; }
+.timber-craft__canvas-top > span:first-child { display: flex; align-items: center; gap: 9px; }
+.timber-craft__canvas-top i { width: 4px; height: 4px; background: var(--accent-ink, #776244); border-radius: 50%; }
+.timber-craft__canvas-top > span:last-child { color: var(--accent-ink, #776244); }
+.timber-craft__canvas-bottom { padding: 6px 0 22px; letter-spacing: .045em; }
+.timber-craft__art { margin: -13px -10px 0; }
+.timber-craft__drawing { display: block; width: 100%; height: auto; overflow: visible; color: var(--accent-ink, #776244); }
+.timber-craft__guides { opacity: .58; }
+.timber-craft__blueprint { opacity: .5; }
+.timber-craft__flow { opacity: .7; }
+.timber-craft__diagram-labels { opacity: 1; font-family: var(--sans); }
+.timber-craft__replay { display: inline-flex; align-items: center; gap: 8px; background: none; padding: 8px 0 8px 14px; color: var(--forest, #2c302e); font-size: 10px; letter-spacing: .035em; }
+.timber-craft__replay:disabled { color: var(--muted, #68665e); cursor: default; }
+.timber-craft__replay:not(:disabled):hover { color: var(--accent-ink, #776244); }
+.timber-craft button:focus-visible { outline: 2px solid var(--accent-ink, #776244); outline-offset: 4px; }
+.timber-craft__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.timber-craft__step { position: relative; display: flex; align-items: center; gap: 19px; padding: 29px 24px 25px 0; background: transparent; text-align: left; color: var(--muted, #68665e); }
+.timber-craft__step + .timber-craft__step { padding-left: 25px; }
+.timber-craft__step::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 2px; background: var(--accent-ink, #776244); transform: scaleX(0); transform-origin: left; }
+.timber-craft__step::after { content: ''; position: absolute; right: 0; top: 27px; bottom: 23px; width: 1px; background: var(--line, rgb(44 48 46 / .17)); }
+.timber-craft__step:last-child::after { display: none; }
+.timber-craft__step.is-active::before { transform: scaleX(1); }
+.timber-craft__step-number { align-self: flex-start; margin-top: 3px; color: var(--accent-ink, #776244); font-size: 10px; letter-spacing: .05em; }
+.timber-craft__step-label { display: block; margin-bottom: 5px; color: var(--muted, #68665e); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+.timber-craft__step strong { display: block; color: var(--forest, #2c302e); font: 400 clamp(17px, 1.55vw, 23px)/1.35 var(--serif); }
+.timber-craft__step > svg { flex-shrink: 0; margin-left: auto; color: var(--accent-ink, #776244); opacity: 0; }
+.timber-craft__step.is-active > svg, .timber-craft__step:hover > svg { opacity: 1; }
+.timber-craft__description { min-height: 22px; margin-top: 13px; color: var(--muted, #68665e); font-size: 11px; letter-spacing: .015em; }
+
+/* One six-second sequence. The parent motion preference controls every animation. */
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__stock,
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__carriage,
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__cut-line,
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__door-board,
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__jamb,
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__handle {
+  animation-duration: 6s;
+  animation-delay: var(--craft-offset, 0ms);
+  animation-timing-function: cubic-bezier(.22, .61, .36, 1);
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__stock { animation-name: craft-stock; }
+.timber-craft__stock--0 { --stock-shift: -27px; }
+.timber-craft__stock--1 { --stock-shift: -16px; }
+.timber-craft__stock--2 { --stock-shift: 12px; }
+.timber-craft__stock--3 { --stock-shift: 28px; }
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__carriage { animation-name: craft-cut; }
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__cut-line { animation-name: craft-cut-line; }
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__door-board { animation-name: craft-assemble; }
+.timber-craft__door-board--0 { --board-x: -86px; --board-y: 22px; }
+.timber-craft__door-board--1 { --board-x: -14px; --board-y: -22px; }
+.timber-craft__door-board--2 { --board-x: 68px; --board-y: 30px; }
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__jamb { animation-name: craft-frame; }
+html[data-motion-mode='full'] .timber-craft--playing .timber-craft__handle { animation-name: craft-handle; }
+html[data-motion-mode='full'] .timber-craft--paused .timber-craft__art * { animation-play-state: paused; }
+html[data-motion-mode='full'] .timber-craft__step::before { transition: transform .4s ease; }
+html[data-motion-mode='full'] .timber-craft__step > svg { transition: opacity .3s ease; }
+
+@keyframes craft-stock { 0% { opacity: .25; transform: translate(var(--stock-shift), 13px); } 22%, 100% { opacity: 1; transform: translate(0, 0); } }
+@keyframes craft-cut { 0%, 32% { transform: translate(0, -14px); } 40% { transform: translate(0, 0); } 62% { transform: translate(157px, 0); } 68% { transform: translate(157px, -14px); } 100% { transform: translate(0, 0); } }
+@keyframes craft-cut-line { 0%, 38% { stroke-dashoffset: 180; opacity: 0; } 41% { opacity: 1; } 63%, 100% { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes craft-assemble { 0%, 62% { opacity: .1; transform: translate(var(--board-x), var(--board-y)); } 69% { opacity: .75; } 90%, 100% { opacity: 1; transform: translate(0, 0); } }
+@keyframes craft-frame { 0%, 63% { opacity: .15; } 83%, 100% { opacity: 1; } }
+@keyframes craft-handle { 0%, 83% { opacity: 0; transform: translateX(16px); } 98%, 100% { opacity: 1; transform: translateX(0); } }
+
+@media (max-width: 900px) {
+  .timber-craft__heading { gap: 30px; }
+  .timber-craft__intro { max-width: 250px; }
+  .timber-craft__intro > span { font-size: 8px; }
+  .timber-craft__step { gap: 12px; padding-right: 15px; }
+  .timber-craft__step + .timber-craft__step { padding-left: 17px; }
+  .timber-craft__step > svg { display: none; }
+}
+@media (max-width: 640px) {
+  .timber-craft { padding: 65px 6vw 56px; }
+  .timber-craft__heading { display: block; margin-bottom: 29px; }
+  .timber-craft .eyebrow { margin-bottom: 19px; }
+  .timber-craft h2 { font-size: clamp(34px, 8.7vw, 49px); }
+  .timber-craft__intro { max-width: 360px; margin-top: 24px; }
+  .timber-craft__intro p { font-size: 12px; line-height: 1.8; }
+  .timber-craft__intro > span { margin-top: 15px; font-size: 8px; }
+  .timber-craft__canvas { padding-inline: 10px; }
+  .timber-craft__canvas-top { font-size: 7px; gap: 12px; letter-spacing: .08em; }
+  .timber-craft__canvas-top > span:last-child { font-size: 6px; }
+  .timber-craft__art { margin: 8px -13px 7px; }
+  .timber-craft__canvas-bottom { padding-bottom: 14px; gap: 8px; font-size: 7px; }
+  .timber-craft__replay { font-size: 8px; min-height: 44px; padding-left: 5px; gap: 5px; }
+  .timber-craft__steps { grid-template-columns: 1fr; }
+  .timber-craft__step, .timber-craft__step + .timber-craft__step { padding: 19px 0; gap: 18px; border-bottom: 1px solid var(--line, rgb(44 48 46 / .17)); }
+  .timber-craft__step::before { left: 0; top: 19px; bottom: 19px; right: auto; width: 2px; height: auto; transform: scaleY(0); transform-origin: top; }
+  .timber-craft__step.is-active::before { transform: scaleY(1); }
+  .timber-craft__step-number { margin-left: 13px; }
+  .timber-craft__step::after { display: none; }
+  .timber-craft__step strong { font-size: 21px; }
+  .timber-craft__step-label { font-size: 8px; margin-bottom: 3px; }
+  .timber-craft__step > svg { display: block; }
+  .timber-craft__description { margin-top: 19px; font-size: 10px; min-height: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timber-craft .timber-craft__art * { animation: none !important; }
+  .timber-craft .timber-craft__step::before, .timber-craft .timber-craft__step > svg { transition: none !important; }
+}

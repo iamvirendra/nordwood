@@ -1,0 +1,113 @@
+[
+  {
+    "id": 7,
+    "name": "Malaysian Saal Door Frame - Single Rebate - 4x2.5ft",
+    "category": "DoorFrame",
+    "woodType": "Malaysian Saal",
+    "frameType": "Door Frame (Chaukhat)",
+    "rebateType": "Single Rebate",
+    "size": "4 x 2.5 ft",
+    "price": 4500,
+    "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "description": "Malaysian saal door frame with single rebate",
+    "details": "Premium Malaysian saal wood frame. Single rebate design. Size: 4ft W × 2.5ft H. Easy installation."
+  },
+  {
+    "id": 8,
+    "name": "Malaysian Saal Door Frame - Double Rebate - 5x2.5ft",
+    "category": "DoorFrame",
+    "woodType": "Malaysian Saal",
+    "frameType": "Door Frame (Chaukhat)",
+    "rebateType": "Double Rebate",
+    "size": "5 x 2.5 ft",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "description": "Malaysian saal door frame with double rebate",
+    "details": "Quality Malaysian saal frame. Double rebate for enhanced strength. Size: 5ft W × 2.5ft H."
+  },
+  {
+    "id": 9,
+    "name": "Kapoor Sal Door Frame - Single Rebate - 4x2.5ft",
+    "category": "DoorFrame",
+    "woodType": "Kapoor Sal",
+    "frameType": "Door Frame (Chaukhat)",
+    "rebateType": "Single Rebate",
+    "size": "4 x 2.5 ft",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "description": "Kapoor sal door frame with single rebate",
+    "details": "Premium kapoor sal wood frame. Single rebate design. Size: 4ft W × 2.5ft H. Durable construction."
+  },
+  {
+    "id": 10,
+    "name": "Kapoor Sal Door Frame - Double Rebate - 5x2.5ft",
+    "category": "DoorFrame",
+    "woodType": "Kapoor Sal",
+    "frameType": "Door Frame (Chaukhat)",
+    "rebateType": "Double Rebate",
+    "size": "5 x 2.5 ft",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "description": "Kapoor sal door frame with double rebate",
+    "details": "Quality kapoor sal frame. Double rebate for maximum strength. Size: 5ft W × 2.5ft H."
+  },
+  {
+    "id": 11,
+    "name": "Desi Sal Door Frame - Double Rebate - 5x2.5ft",
+    "category": "DoorFrame",
+    "woodType": "Desi Sal",
+    "frameType": "Door Frame (Chaukhat)",
+    "rebateType": "Double Rebate",
+    "size": "5 x 2.5 ft",
+    "price": 4200,
+    "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "description": "Desi sal door frame with double rebate",
+    "details": "Solid desi sal wood frame. Double rebate construction. Size: 5ft W × 2.5ft H. Cost-effective option."
+  },
+  {
+    "id": 12,
+    "name": "Plantation Teak Window - 4ft x 3ft",
+    "category": "Window",
+    "woodType": "Plantation Teak",
+    "windowType": "Wooden Window",
+    "size": "4 x 3 ft",
+    "price": 8900,
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&h=500&fit=crop",
+    "description": "Standard plantation teak wooden window",
+    "details": "Premium plantation teak window frame. Traditional design. Size: 4ft W × 3ft H. Weather-resistant finish."
+  },
+  {
+    "id": 13,
+    "name": "Plantation Teak Window - 5ft x 3.5ft",
+    "category": "Window",
+    "woodType": "Plantation Teak",
+    "windowType": "Wooden Window",
+    "size": "5 x 3.5 ft",
+    "price": 10800,
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&h=500&fit=crop",
+    "description": "Large plantation teak wooden window",
+    "details": "Premium plantation teak construction. Large window design. Size: 5ft W × 3.5ft H. Enhanced ventilation."
+  },
+  {
+    "id": 14,
+    "name": "Teak Window Frame Kit - Standard",
+    "category": "WindowFrame",
+    "woodType": "Teak Wood",
+    "windowType": "Window Frame Kit",
+    "price": 6500,
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&h=500&fit=crop",
+    "description": "Complete teak wood window frame assembly kit",
+    "details": "All-in-one window frame kit with installation hardware. Premium teak construction. Multiple sizes available. Easy DIY installation."
+  },
+  {
+    "id": 15,
+    "name": "Teak Window Frame Kit - Premium",
+    "category": "WindowFrame",
+    "woodType": "Teak Wood",
+    "windowType": "Window Frame Kit",
+    "price": 9200,
+    "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&h=500&fit=crop",
+    "description": "Premium teak wood window frame assembly kit",
+    "details": "Premium quality teak wood frame kit. Enhanced hardware and finishing. Multiple size options. Professional installation guide included."
+  }
+]
