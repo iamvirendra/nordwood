@@ -33,11 +33,11 @@ export default function BlogDetail() {
   const nextPost = blogPosts[(postIndex + 1) % blogPosts.length];
 
   return (
-    <div className="blog-detail">
+    <div className={`blog-detail${post.woodType ? ' blog-detail--wood-guide' : ''}`}>
       <div className="blog-detail__inner">
         <nav className="blog-detail__navigation" aria-label="Journal navigation">
           <Link to="/blog" className="blog-detail__back"><JournalArrow back /> Back to journal</Link>
-          <span>The NordWood journal</span>
+          {post.woodType ? <Link to="/#wood-types" className="blog-detail__back">All wood types <JournalArrow /></Link> : <span>The NordWood journal</span>}
         </nav>
 
         <article key={post.id} className="blog-detail__article" aria-labelledby="blog-detail-title">
@@ -59,10 +59,19 @@ export default function BlogDetail() {
 
             <div className="blog-detail__copy" data-motion="rise">
               {post.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+              {post.sections?.map(section => (
+                <section key={section.id} id={section.id} className="blog-detail__section" aria-labelledby={`${section.id}-title`}>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  {section.paragraphs?.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                  {section.bullets?.length > 0 && <ul>{section.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>}
+                </section>
+              ))}
               <aside className="blog-detail__takeaway" aria-label="A detail to remember">
                 <span>A detail to remember</span>
                 <p>{post.takeaway}</p>
               </aside>
+              {post.woodType && <div className="blog-detail__wood-action"><p>Bring the material into your home.</p><Link to={`/shop?${new URLSearchParams({ category: post.shopCategory, wood: post.woodType })}`}>Explore {post.woodType} <JournalArrow /></Link></div>}
+              {post.sources?.length > 0 && <section className="blog-detail__sources" aria-label="Further reading"><h2>Further reading</h2><ul>{post.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a></li>)}</ul></section>}
             </div>
           </div>
         </article>

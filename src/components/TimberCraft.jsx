@@ -179,7 +179,7 @@ export default function TimberCraft() {
   const paused = !visible || !pageVisible;
 
   return (
-    <section ref={sectionRef} className={`timber-craft ${visible ? 'is-visible' : ''} ${playing && enabled ? 'timber-craft--playing' : ''} ${paused ? 'timber-craft--paused' : ''}`} aria-labelledby={`${prefix}-title`}>
+    <section ref={sectionRef} id="approach" className={`timber-craft ${visible ? 'is-visible' : ''} ${playing && enabled ? 'timber-craft--playing' : ''} ${paused ? 'timber-craft--paused' : ''}`} aria-labelledby={`${prefix}-title`}>
       <div className="timber-craft__heading" data-motion="reveal" data-reveal>
         <div><p className="eyebrow">From timber to timeless</p><h2 id={`${prefix}-title`}>Good wood.<br /><em>Thoughtfully transformed.</em></h2></div>
         <div className="timber-craft__intro"><p>Every opening begins with the material. Follow the journey from natural timber to a piece that feels at home.</p><span>A study in material, precision &amp; purpose</span></div>

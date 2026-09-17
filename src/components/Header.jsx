@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import MotionToggle from '../motion/MotionToggle';
+import DeliveryCartLink from './DeliveryCartLink';
 import './Header.css';
 
 export default function Header({ cartCount = 0 }) {
@@ -10,13 +10,6 @@ export default function Header({ cartCount = 0 }) {
 
   return (
     <header className="header header--home">
-      <div className="header-utility">
-        <div className="header-utility-inner">
-          <span>Architectural woodworks / Lucknow</span>
-          <span>Made-to-size · Appointments by request</span>
-          <MotionToggle />
-        </div>
-      </div>
       <div className="header-container">
         <Link to="/" className="logo">
           <img src="/1000687991.svg" alt="NordWood" className="logo-image" />
@@ -56,10 +49,7 @@ export default function Header({ cartCount = 0 }) {
         </nav>
 
         <div className="header-actions">
-          <Link to="/cart" className="cart-icon">
-            <span className="cart-label">Bag</span>
-            <span key={cartCount} className="cart-count">{cartCount}</span>
-          </Link>
+          <DeliveryCartLink count={cartCount} />
         </div>
       </div>
     </header>

@@ -23,6 +23,26 @@
 .blog-detail__copy { min-width: 0; padding-top: .1rem; }
 .blog-detail__copy > p { margin-bottom: 1.3rem; color: var(--ink-soft); font-size: .9375rem; line-height: 1.95; }
 .blog-detail__copy > p:last-of-type { margin-bottom: 0; }
+.blog-detail__section { margin-top: 2rem; scroll-margin-top: 9rem; }
+.blog-detail__section h2 { margin-bottom: .8rem; font-family: var(--serif); font-size: clamp(1.65rem, 2.4vw, 2.2rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2; }
+.blog-detail__section p, .blog-detail__section li { color: var(--ink-soft); font-size: .9375rem; line-height: 1.9; }
+.blog-detail__section p + p { margin-top: 1rem; }
+.blog-detail__section ul { padding-left: 1.2rem; margin: .8rem 0 0; }
+.blog-detail__section li + li { margin-top: .5rem; }
+.blog-detail__wood-action { margin-top: 1.5rem; padding: 1.3rem 1.4rem; background: var(--surface-muted); }
+.blog-detail__wood-action p { color: var(--muted); font-size: .8125rem; }
+.blog-detail__wood-action a { display: flex; min-height: 44px; justify-content: space-between; align-items: center; gap: 1rem; margin-top: .4rem; font-size: .875rem; }
+.blog-detail__wood-action a:hover { color: var(--accent-ink); }
+.blog-detail__sources { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.blog-detail__sources h2 { color: var(--muted); font-size: .6875rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.blog-detail__sources ul { margin: .65rem 0 0; padding-left: 1rem; }
+.blog-detail__sources li { padding-block: .25rem; color: var(--muted); font-size: .75rem; line-height: 1.8; }
+.blog-detail__sources a { text-decoration: underline; text-underline-offset: 3px; }
+.blog-detail__sources a:hover { color: var(--accent-ink); }
+@media (min-width: 801px) and (min-height: 720px) {
+  .blog-detail--wood-guide .blog-detail__gallery { position: sticky; top: 8.5rem; }
+  .blog-detail--wood-guide .blog-carousel__viewport { max-height: 46svh; }
+}
 .blog-detail__takeaway { margin-top: 1.8rem; padding: 1.3rem 1.4rem 1.4rem; border-left: 2px solid var(--sand); background: var(--paper-light); }
 .blog-detail__takeaway > span { color: var(--accent-ink); font-size: .625rem; letter-spacing: .13em; text-transform: uppercase; }
 .blog-detail__takeaway > p { margin-top: .6rem; color: var(--ink-soft); font-family: var(--serif); font-size: 1.25rem; line-height: 1.55; }

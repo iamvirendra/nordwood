@@ -20,7 +20,7 @@ export default function Blog() {
         <div className="blog-masthead__note" data-page-enter>
           <span className="blog-masthead__rule" aria-hidden="true" />
           <p>Good spaces begin with thoughtful details. A collection of ideas on wood, proportion and the pieces that make a home.</p>
-          <span>Design notes / Materials / Planning</span>
+          <span>Wood guides / Design notes / Planning</span>
         </div>
       </header>
 

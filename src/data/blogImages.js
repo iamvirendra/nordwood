@@ -1,5 +1,35 @@
 // Illustrative photos. Replace a source here to update every story that uses it.
 export const blogImages = {
+  'wood-plantation-teak': {
+    src: '/images/wood-plantation-teak.jpg',
+    alt: 'Illustrative close-up of honey-toned teak boards with visible natural grain',
+    caption: 'A teak material study: compare the grain and finish on a current sample.',
+  },
+  'wood-forest-teak': {
+    src: '/images/wood-forest-teak.jpg',
+    alt: 'Illustrative study of warm brown teak with flowing grain',
+    caption: 'The grain of each board contributes to the character of the finished piece.',
+  },
+  'wood-imported-teak': {
+    src: '/images/wood-imported-teak.jpg',
+    alt: 'Illustrative teak samples showing warm timber tones and fine grain',
+    caption: 'Teak tones vary. An approved sample is the best reference for your project.',
+  },
+  'wood-malaysian-saal': {
+    src: '/images/wood-malaysian-saal.jpg',
+    alt: 'Illustrative light brown hardwood sample for the Malaysian Saal material guide',
+    caption: 'A representative hardwood study; confirm the species and appearance of the supplied timber.',
+  },
+  'wood-kapoor-sal': {
+    src: '/images/wood-kapoor-sal.jpg',
+    alt: 'Illustrative reddish brown hardwood boards for the Kapoor Sal material guide',
+    caption: 'A warm hardwood study, with visible grain and carefully finished edges.',
+  },
+  'wood-desi-sal': {
+    src: '/images/wood-desi-sal.jpg',
+    alt: 'Illustrative golden brown sal timber sample with coarse natural grain',
+    caption: 'A sal material study showing the texture and warmth of the timber.',
+  },
   entry: {
     src: '/images/nordwood-teak-entry.jpg',
     alt: 'Tall timber entrance door beside warm plaster walls and a quiet courtyard',

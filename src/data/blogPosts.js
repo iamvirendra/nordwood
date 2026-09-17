@@ -1,4 +1,7 @@
+import { woodGuides } from './woodGuides';
+
 export const blogPosts = [
+  ...woodGuides,
   {
     id: 'finding-the-right-door-proportions',
     category: 'Design notes',

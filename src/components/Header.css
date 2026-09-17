@@ -7,25 +7,6 @@
   border-bottom: 1px solid var(--line);
   box-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 8%, transparent);
 }
-.header-utility {
-  background: var(--surface-muted);
-  color: var(--muted, #68645e);
-  border-bottom: 1px solid var(--line);
-  font-size: .625rem;
-  font-weight: 400;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-.header-utility-inner {
-  display: flex;
-  min-height: 29px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-inline: clamp(1.4rem, 5.6vw, 6rem);
-}
-.header-utility-inner > span:nth-of-type(2) { margin-left: auto; }
-.header-utility-inner > button { flex-shrink: 0; }
 .header-container {
   display: grid;
   min-height: 86px;
@@ -97,31 +78,6 @@
 .header .nav-link:focus-visible::after,
 .header .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
-.cart-icon {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  gap: .65rem;
-  padding: .6rem 0 .6rem .4rem;
-  color: var(--ink, #111111);
-  font-size: .75rem;
-  letter-spacing: .04em;
-  transition: color .25s ease;
-}
-.cart-icon:hover { color: var(--accent-ink, #776244); }
-.cart-count {
-  display: grid;
-  min-width: 24px;
-  height: 24px;
-  padding-inline: .3rem;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent-ink) 45%, transparent);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--brass) 32%, transparent);
-  color: var(--accent-ink, #776244);
-  font-size: .625rem;
-  letter-spacing: 0;
-}
 .hamburger {
   display: none;
   width: 44px;
@@ -150,8 +106,6 @@
   .header .nav { gap: 1.5rem; }
 }
 @media (max-width: 900px) {
-  .header-utility-inner { gap: .7rem; }
-  .header-utility-inner > span:nth-of-type(2) { display: none; }
   .header-container { min-height: 74px; grid-template-columns: minmax(0, 1fr) auto auto; gap: 1rem; }
   .hamburger { display: flex; grid-column: 2; grid-row: 1; }
   .header .nav {
@@ -182,11 +136,15 @@
   .logo-name { font-size: 1.65rem; }
   .logo-tagline { display: none; }
 }
-@media (max-width: 370px) {
-  .header-container { gap: .75rem; }
-  .header-utility { font-size: .5625rem; letter-spacing: .07em; }
+@media (max-width: 420px) {
+  .header-container { gap: .5rem; }
   .logo-image { display: none; }
+}
+@media (max-width: 370px) {
   .logo-name { font-size: 1.6rem; }
+}
+@media (max-width: 340px) {
+  .header-container { gap: .35rem; }
 }
 @keyframes masthead-enter {
   from { opacity: 0; transform: translateY(-7px); }

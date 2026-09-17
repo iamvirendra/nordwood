@@ -1,0 +1,48 @@
+.delivery-cart { display: inline-flex; flex-shrink: 0; align-items: center; gap: .55rem; min-height: 64px; max-width: 100%; padding: 0; border-radius: 10px; color: var(--accent-ink); }
+.delivery-cart__art { position: relative; display: block; width: 142px; height: 74px; flex-shrink: 0; padding-top: 4px; }
+.delivery-cart__scene { display: block; width: 142px; height: 68px; overflow: hidden; }
+.delivery-cart__count { position: absolute; top: 1px; right: 2px; display: grid; min-width: 23px; height: 23px; place-items: center; padding-inline: 4px; border: 2px solid var(--paper); border-radius: 20px; background: var(--forest-deep); color: var(--brass-light); font-family: var(--sans); font-size: .625rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.delivery-cart__copy { display: flex; flex-direction: column; gap: .25rem; padding-right: .15rem; white-space: nowrap; }
+.delivery-cart__copy strong { color: var(--forest-deep); font-family: var(--serif); font-size: 1.125rem; font-weight: 400; line-height: 1.15; letter-spacing: -.025em; }
+.delivery-cart__copy > span { display: flex; justify-content: space-between; align-items: center; gap: .5rem; font-size: .5625rem; line-height: 1.4; letter-spacing: .045em; }
+.delivery-cart__copy > span > span { font-size: .875rem; line-height: 1; }
+.delivery-cart:hover { background: rgb(232 216 182 / .2); }
+.delivery-cart:focus-visible { outline-offset: 3px; }
+.delivery-cart__wheel { transform-box: fill-box; transform-origin: center; }
+
+/* A short loading-and-driving scene; it replays on hover, focus, or selection changes. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion-mode='full'] .delivery-cart { transition: background .3s ease; }
+  html[data-motion-mode='full'] .delivery-cart__cargo { animation: delivery-load 3.6s var(--ease-out) both; }
+  html[data-motion-mode='full'] .delivery-cart__cargo--frame { animation-delay: .12s; }
+  html[data-motion-mode='full'] .delivery-cart__cargo--planks { animation-delay: .24s; }
+  html[data-motion-mode='full'] .delivery-cart__vehicle { animation: delivery-drive 3.6s ease-in-out both; }
+  html[data-motion-mode='full'] .delivery-cart__wheel { animation: delivery-wheel 3.6s ease-in-out both; }
+  html[data-motion-mode='full'] .delivery-cart__road { animation: delivery-road 3.6s ease-in-out both; }
+  html[data-motion-mode='full'] .delivery-cart__trail { animation: delivery-trail 3.6s ease-in-out both; }
+  html[data-motion-mode='full'] .delivery-cart__home { animation: delivery-home 3.6s ease-in-out both; }
+  html[data-motion-mode='full'] .delivery-cart__count { animation: delivery-count .5s var(--ease-out) both; }
+}
+@keyframes delivery-load { 0% { opacity: 0; transform: translate(-4px, -12px); } 18%, 100% { opacity: 1; transform: translate(0, 0); } }
+@keyframes delivery-drive { 0%, 30% { transform: translate(-3px, 0); } 45% { transform: translate(2px, -1px); } 58% { transform: translate(6px, 0); } 72% { transform: translate(9px, -1px); } 85% { transform: translate(6px, 0); } 100% { transform: translate(0, 0); } }
+@keyframes delivery-wheel { 0%, 30% { transform: rotate(0); } 100% { transform: rotate(720deg); } }
+@keyframes delivery-road { 0%, 30% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 74; } }
+@keyframes delivery-trail { 0%, 28%, 100% { opacity: 0; transform: translateX(0); } 40%, 75% { opacity: 1; } 85% { opacity: .3; transform: translateX(-7px); } }
+@keyframes delivery-home { 0%, 45% { opacity: .3; } 75% { opacity: 1; } 100% { opacity: .55; } }
+@keyframes delivery-count { from { transform: scale(.7); } to { transform: scale(1); } }
+@media (max-width: 1100px) {
+  .delivery-cart__copy { display: none; }
+  .delivery-cart__art { width: 126px; height: 64px; padding-top: 2px; }
+  .delivery-cart__scene { width: 126px; height: 60px; }
+  .delivery-cart__count { min-width: 21px; height: 21px; font-size: .5625rem; }
+}
+@media (max-width: 420px) {
+  .delivery-cart__art { width: 110px; height: 62px; padding-top: 6px; }
+  .delivery-cart__scene { width: 110px; height: 53px; }
+  .delivery-cart__count { top: 0; right: 0; }
+}
+@media (max-width: 340px) {
+  .delivery-cart__art { width: 92px; height: 58px; padding-top: 10px; }
+  .delivery-cart__scene { width: 92px; height: 44px; }
+  .delivery-cart__count { top: 3px; }
+}

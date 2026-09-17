@@ -121,4 +121,4 @@ select:focus-visible {
   background: var(--clay);
 }
 
-:is(.home-hero, .home-cta, .woodcut-intro) :is(a, button):focus-visible { outline-color: var(--brass); }
+:is(.home-hero, .home-cta) :is(a, button):focus-visible { outline-color: var(--brass); }
