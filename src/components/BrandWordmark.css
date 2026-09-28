@@ -1,0 +1,23 @@
+.brand-wordmark {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: var(--wordmark-width, 10rem);
+  max-width: 100%;
+  aspect-ratio: 1972 / 307;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/* Present the lettering without the large transparent canvas margins.
+   The original 2172 × 724 PNG is preserved; the display window is
+   x=100, y=196, width=1972, height=307 in its original coordinates. */
+.brand-wordmark > img {
+  position: absolute;
+  top: -63.843648%;
+  left: -5.070994%;
+  display: block;
+  width: 110.141988%;
+  max-width: none;
+  height: auto;
+}

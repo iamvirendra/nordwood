@@ -1,15 +1,33 @@
-// Illustrative photos. Replace a source here to update every story that uses it.
+import suppliedImages from './suppliedImages.json';
+
+const materialEntries = Object.entries(suppliedImages.materials);
+const materialImageKey = (woodType, image, index) => {
+  const coverKey = `wood-${woodType.toLowerCase().replaceAll(' ', '-')}`;
+  const filename = image.src.split('/').pop().replace(/\.[^.]+$/, '');
+  return index === 0 ? coverKey : `${coverKey}-${filename}`;
+};
+
+// Keep existing cover keys; additional keys follow the source filenames.
+export const suppliedWoodImageKeys = Object.fromEntries(
+  materialEntries.map(([woodType, images]) => [
+    woodType,
+    images.map((image, index) => materialImageKey(woodType, image, index)),
+  ]),
+);
+
+const suppliedWoodImages = Object.fromEntries(
+  materialEntries.flatMap(([woodType, images]) => images.map((image, index) => [
+    materialImageKey(woodType, image, index),
+    {
+      ...image,
+      caption: `${woodType}: ${image.label.toLowerCase()}. Compare this material reference with a current sample.`,
+    },
+  ])),
+);
+
+// Supplied material/design references and the remaining editorial illustrations.
 export const blogImages = {
-  'wood-plantation-teak': {
-    src: '/images/wood-plantation-teak.jpg',
-    alt: 'Illustrative close-up of honey-toned teak boards with visible natural grain',
-    caption: 'A teak material study: compare the grain and finish on a current sample.',
-  },
-  'wood-forest-teak': {
-    src: '/images/wood-forest-teak.jpg',
-    alt: 'Illustrative study of warm brown teak with flowing grain',
-    caption: 'The grain of each board contributes to the character of the finished piece.',
-  },
+  ...suppliedWoodImages,
   'wood-imported-teak': {
     src: '/images/wood-imported-teak.jpg',
     alt: 'Illustrative teak samples showing warm timber tones and fine grain',
@@ -19,16 +37,6 @@ export const blogImages = {
     src: '/images/wood-malaysian-saal.jpg',
     alt: 'Illustrative light brown hardwood sample for the Malaysian Saal material guide',
     caption: 'A representative hardwood study; confirm the species and appearance of the supplied timber.',
-  },
-  'wood-kapoor-sal': {
-    src: '/images/wood-kapoor-sal.jpg',
-    alt: 'Illustrative reddish brown hardwood boards for the Kapoor Sal material guide',
-    caption: 'A warm hardwood study, with visible grain and carefully finished edges.',
-  },
-  'wood-desi-sal': {
-    src: '/images/wood-desi-sal.jpg',
-    alt: 'Illustrative golden brown sal timber sample with coarse natural grain',
-    caption: 'A sal material study showing the texture and warmth of the timber.',
   },
   entry: {
     src: '/images/nordwood-teak-entry.jpg',
@@ -51,10 +59,8 @@ export const blogImages = {
     caption: 'Natural light brings warmth to the wood and surrounding walls.',
   },
   'single-door': {
-    src: '/images/nordwood-door.jpg',
-    alt: 'Illustrative solid timber single door with a simple panelled design',
-    caption: 'A single door, with space to appreciate its proportions.',
-    fit: 'contain',
+    ...suppliedImages.singleDoors[0],
+    caption: 'A supplied single-door design reference. Confirm the wood selection and finish for your order.',
   },
   'double-door': {
     src: '/images/nordwood-double-door.jpg',
@@ -69,10 +75,8 @@ export const blogImages = {
     fit: 'contain',
   },
   window: {
-    src: '/images/nordwood-window.jpg',
-    alt: 'Illustrative wooden window with glazed panels and a timber surround',
-    caption: 'A window adds its own pattern to the material palette.',
-    fit: 'contain',
+    ...suppliedImages.windows[0],
+    caption: 'A supplied window design reference. Confirm the wood selection and finish for your order.',
   },
   'window-frame': {
     src: '/images/nordwood-window-frame.jpg',

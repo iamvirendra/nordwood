@@ -6,14 +6,15 @@ Door pricing comes from [PRICING DOORS.xlsx](https://docs.google.com/spreadsheet
 
 `src/data/products.js` builds the six door families and their exact size variants. Existing door URLs 1–6 are retained. `src/data/other-products.json` preserves the earlier frame and window catalog; these products are not covered by the supplied door workbook. Size choices come from actual product variants.
 
-## Replace the dummy photographs
+## Product and material images
 
-1. Put the original image files in `public/images/`. Prefer compressed JPG or WebP files, with a portrait image for the first product photo.
-2. Edit that family's entry in `src/data/productImages.js`. Each `images` array accepts three or more `{ src, alt, label }` entries. Paths start with `/images/`, e.g. `{ src: '/images/plantation-single-front.jpg', alt: 'Plantation teak single door, front view', label: 'Front view' }`.
-3. Use distinct front, detail and installation views. Every size variant inherits the family's gallery. For a frame/window product, add its name as another key in `productGalleries` to override the shared placeholders.
-4. After replacing the illustrative photos, adjust `illustrativeImages` in `products.js` and the footer's illustrative-photo note to reflect the actual images.
+`src/data/suppliedImages.json` holds the 32 visually checked images imported from the supplied Drive folders on 28 September 2026. Files live under `public/images/catalog/`; [image-sources.json](image-sources.json) records each original filename, Drive file/folder ID, dimensions and SHA-256 checksum. [IMAGE_MAPPING.md](IMAGE_MAPPING.md) documents the category mapping and missing replacements.
 
-The current dummy galleries share a design view by door type or product category, a timber detail, and an architectural inspiration photo. They do not claim to be photographs of the exact product. Gallery thumbnails, previous/next controls and keyboard arrows display all supplied images.
+`src/data/productImages.js` assigns single-door designs only to single-door families, window designs only to Windows, and material photographs only to products with the exact matching wood name. Generic design photos do not establish wood species or an exact priced specification. Double-door and frame illustrations remain where no matching supplied finished-product photo exists. Each gallery image has its own reference label; material stock is never presented as a finished frame.
+
+All size variants inherit their family's gallery. Home category tiles, product cards, detail pages, related products and saved bags use the same source registry. Product images use `object-fit: contain` to preserve the full design. Galleries support any positive number of images, with scrolling thumbnails, previous/next controls and keyboard arrows.
+
+To add replacements, put the original WebP/JPG/PNG in `public/images/catalog/`, record its provenance, and update the appropriate registry. Use `kind: 'design'` for general designs, `kind: 'material'` with an exact `material` name for timber photos, and `kind: 'illustration'` for retained placeholders. Run `npm run check:images` after changing mappings.
 
 ## Customer pricing and bag
 

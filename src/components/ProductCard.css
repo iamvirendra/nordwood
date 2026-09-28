@@ -1,6 +1,6 @@
 .product-card { display: flex; height: 100%; flex-direction: column; background: transparent; }
 .product-image-container { position: relative; display: block; height: auto; aspect-ratio: 2 / 3; overflow: hidden; background: var(--surface-muted); }
-.product-image { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
+.product-image { width: 100%; height: 100%; object-fit: contain; }
 .product-image-label { position: absolute; z-index: 1; top: .9rem; left: .9rem; padding: .3rem .5rem; background: color-mix(in srgb, var(--paper) 92%, transparent); color: var(--muted); font-size: .625rem; letter-spacing: .05em; }
 .product-info { display: flex; flex: 1; flex-direction: column; gap: .75rem; padding: 1.2rem 0 0; }
 .product-category { display: flex; flex-wrap: wrap; gap: .5rem; }

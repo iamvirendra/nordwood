@@ -64,7 +64,7 @@
   line-height: 1.6;
 }
 .blog-carousel__divider { padding-inline: .3rem; color: var(--muted); }
-.blog-carousel__dots { display: flex; align-items: center; justify-content: center; }
+.blog-carousel__dots { display: flex; max-width: 100%; flex-wrap: wrap; align-items: center; justify-content: center; }
 .blog-carousel__dot {
   display: grid;
   width: 44px;

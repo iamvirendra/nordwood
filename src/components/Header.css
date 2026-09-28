@@ -15,27 +15,18 @@
   gap: 2rem;
   padding-inline: clamp(1.4rem, 5.6vw, 6rem);
 }
-.header .logo { display: inline-flex; width: fit-content; align-items: center; gap: .75rem; }
+.header .logo { display: inline-flex; width: fit-content; align-items: center; gap: .5rem; }
 .logo-image {
-  width: 2.75rem;
-  height: 2.75rem;
-  flex: 0 0 2.75rem;
-  padding: 2px;
-  border: 1px solid color-mix(in srgb, var(--accent-ink) 40%, transparent);
-  background: var(--paper, #f4f0e6);
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: 0 0 4.5rem;
+  /* Account for the transparent margin in the original logo artwork. */
+  margin-inline: -.625rem;
   object-fit: contain;
-  transition: border-color .25s ease, transform .35s ease;
+  transition: transform .35s ease;
 }
 .logo-copy { display: flex; flex-direction: column; gap: .28rem; }
-.logo-name {
-  color: var(--ink, #111111);
-  font-family: var(--serif);
-  font-size: 1.85rem;
-  font-weight: 400;
-  letter-spacing: -.065em;
-  line-height: 1;
-  transition: color .25s ease;
-}
+.logo-name { --wordmark-width: clamp(116px, 11vw, 160px); }
 .logo-tagline {
   color: var(--muted, #68645e);
   font-size: .5rem;
@@ -43,8 +34,6 @@
   letter-spacing: .13em;
   text-transform: uppercase;
 }
-.logo:hover .logo-image { border-color: var(--accent-ink, #776244); }
-.logo:hover .logo-name { color: var(--accent-ink, #776244); }
 .header .nav { display: flex; align-items: center; justify-content: center; gap: clamp(1.2rem, 2.4vw, 2.5rem); }
 .header .nav-link {
   position: relative;
@@ -132,18 +121,18 @@
   .header .nav-link.active::after { transform: scaleY(1); }
   .header .nav-link:focus-visible { outline-offset: -5px; }
   .header-actions { grid-column: 3; grid-row: 1; }
-  .logo-image { width: 2.25rem; height: 2.25rem; flex-basis: 2.25rem; }
-  .logo-name { font-size: 1.65rem; }
+  .logo-image { width: 3.75rem; height: 3.75rem; flex-basis: 3.75rem; margin-inline: -.5rem; }
+  .logo-name { --wordmark-width: clamp(112px, calc(100vw - 304px), 128px); }
   .logo-tagline { display: none; }
 }
 @media (max-width: 420px) {
   .header-container { gap: .5rem; }
-  .logo-image { display: none; }
-}
-@media (max-width: 370px) {
-  .logo-name { font-size: 1.6rem; }
+  .header .logo { gap: .25rem; }
+  .logo-image { width: 3.25rem; height: 3.25rem; flex-basis: 3.25rem; }
+  .logo-name { --wordmark-width: clamp(84px, calc(100vw - 258px), 112px); }
 }
 @media (max-width: 340px) {
+  .logo-name { --wordmark-width: 84px; }
   .header-container { gap: .35rem; }
 }
 @keyframes masthead-enter {

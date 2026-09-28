@@ -1,5 +1,5 @@
 import { doorPricing } from './doorPricing';
-import { getProductImages } from './productImages';
+import { getImageLabel, getProductImages } from './productImages';
 import otherProducts from './other-products.json';
 
 // Preserve the six existing door URLs while assigning stable IDs to added sizes.
@@ -23,7 +23,8 @@ const doors = doorPricing.flatMap((wood, woodIndex) => ['single', 'double'].flat
     price,
     image: images[0].src,
     images,
-    illustrativeImages: true,
+    imageLabel: getImageLabel(images[0]),
+    illustrativeImages: images.some(image => image.kind === 'illustration'),
     description: `${wood.woodType} in a ${type === 'single' ? 'single-leaf' : 'double-leaf'} design. Choose the standard size for your space.`,
     details: `${familyName}. ${height} ft high × ${width} ft wide, with ${woodCFT} CFT of wood. Price shown is for the selected standard size. GST extra.`,
   }));
@@ -31,8 +32,8 @@ const doors = doorPricing.flatMap((wood, woodIndex) => ['single', 'double'].flat
 
 // Existing frame/window prices are retained; the supplied workbook covers doors.
 const otherWoodwork = otherProducts.map(product => {
-  const images = getProductImages(product.name, product.category);
-  return { ...product, images, image: images[0].src, illustrativeImages: true };
+  const images = getProductImages(product.name, product.category, product.woodType);
+  return { ...product, images, image: images[0].src, imageLabel: getImageLabel(images[0]), illustrativeImages: images.some(image => image.kind === 'illustration') };
 });
 
 export const products = [...doors, ...otherWoodwork];

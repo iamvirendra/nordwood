@@ -1,0 +1,212 @@
+.door-assembly {
+  --assembly-green: #263d2b;
+  --assembly-border: rgb(85 65 38 / 16%);
+  width: 100%;
+  min-width: 0;
+}
+
+.door-assembly__stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--assembly-border);
+  border-radius: 4px;
+  background: radial-gradient(ellipse at 50% 40%, #fffefb 0%, #f7f3eb 57%, #ece4d6 100%);
+}
+
+.door-assembly__stage-heading,
+.door-assembly__stage-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  color: #746047;
+  font-size: .65rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.door-assembly__stage-heading {
+  border-bottom: 1px solid rgb(85 65 38 / 9%);
+}
+
+.door-assembly__stage-heading span:last-child {
+  color: var(--assembly-green);
+}
+
+.door-assembly__stage-caption {
+  padding-top: .75rem;
+  padding-bottom: 1.25rem;
+  font-size: .59rem;
+  letter-spacing: .1em;
+}
+
+.door-assembly__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.door-assembly__piece {
+  transform-origin: 0 0;
+}
+
+.door-assembly--animated .door-assembly__piece {
+  transition: transform 1250ms cubic-bezier(.22, .75, .18, 1), opacity 850ms ease;
+}
+
+.door-assembly__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 1.35rem 0 .85rem;
+}
+
+.door-assembly__buttons {
+  display: flex;
+  flex: 0 0 auto;
+  gap: .35rem;
+  padding: .3rem;
+  border: 1px solid var(--assembly-border);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 38%);
+}
+
+.door-assembly__buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .65rem 1.15rem;
+  border-radius: 2px;
+  background: transparent;
+  color: #5d5c51;
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.door-assembly__buttons button[aria-pressed='true'] {
+  background: var(--assembly-green);
+  color: #fffaf0;
+}
+
+.door-assembly__buttons button:not([aria-pressed='true']):hover {
+  background: #e7e1d4;
+  color: var(--assembly-green);
+}
+
+.door-assembly__buttons svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.3;
+}
+
+.door-assembly__slider {
+  width: min(100%, 400px);
+  min-width: 120px;
+}
+
+.door-assembly__slider label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--assembly-green);
+  font-size: .73rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.door-assembly__slider label span {
+  color: #777064;
+  font-weight: 400;
+}
+
+.door-assembly__slider input {
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin: .15rem 0 0;
+  padding: 0;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+
+.door-assembly__slider input::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--assembly-green) var(--separation), #d3c8b6 var(--separation));
+}
+
+.door-assembly__slider input::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: #d3c8b6;
+}
+
+.door-assembly__slider input::-moz-range-progress {
+  height: 3px;
+  background: var(--assembly-green);
+}
+
+.door-assembly__slider input::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -7.5px;
+  appearance: none;
+  border: 3px solid #f7f3eb;
+  border-radius: 50%;
+  background: var(--assembly-green);
+  box-shadow: 0 0 0 1px var(--assembly-green);
+}
+
+.door-assembly__slider input::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 3px solid #f7f3eb;
+  border-radius: 50%;
+  background: var(--assembly-green);
+  box-shadow: 0 0 0 1px var(--assembly-green);
+}
+
+.door-assembly__note {
+  color: #746e62;
+  font-size: .7rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .door-assembly__stage-heading,
+  .door-assembly__stage-caption { padding-inline: 1rem; }
+  .door-assembly__stage-heading { padding-block: 1rem; font-size: .54rem; letter-spacing: .07em; }
+  .door-assembly__stage-caption { padding-block: .7rem; font-size: .5rem; letter-spacing: .04em; }
+  .door-assembly__stage-caption span:last-child { display: none; }
+  .door-assembly__controls { flex-direction: column; align-items: stretch; gap: 1.1rem; padding-top: 1rem; }
+  .door-assembly__buttons { align-self: center; }
+  .door-assembly__slider { width: 100%; }
+  .door-assembly__note { font-size: .67rem; }
+}
+
+@media (max-width: 380px) {
+  .door-assembly__buttons { width: 100%; }
+  .door-assembly__buttons button { flex: 1; padding-inline: .65rem; font-size: .71rem; }
+  .door-assembly__stage-heading { gap: .5rem; font-size: .48rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door-assembly--animated .door-assembly__piece,
+  .door-assembly__buttons button { transition: none; }
+}
+
+[data-motion-mode='reduced'] .door-assembly__piece,
+[data-motion-mode='reduced'] .door-assembly__buttons button { transition: none; }

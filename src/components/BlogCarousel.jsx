@@ -71,8 +71,8 @@ export default function BlogCarousel({ images = [], title, priority = false }) {
             style={{ objectFit: activeImage.fit || 'cover' }}
             src={activeImage.src}
             alt={activeImage.alt || `${title}, photo ${activeIndex + 1}`}
-            width="1200"
-            height="900"
+            width={activeImage.width || 1200}
+            height={activeImage.height || 900}
             loading={priority ? 'eager' : 'lazy'}
             fetchPriority={priority ? 'high' : 'auto'}
             decoding="async"

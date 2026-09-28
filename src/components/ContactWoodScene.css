@@ -1,0 +1,38 @@
+.contact-3d { --piece-width: 35%; --piece-height: 76%; --piece-turn: -18deg; --view-x: 0deg; --view-y: 0deg; --light-x: 50%; position: relative; height: clamp(350px, 36vw, 510px); overflow: hidden; isolation: isolate; perspective: 1100px; background: #e9e1d2; }
+.contact-3d--windows { --piece-width: 48%; --piece-height: 72%; }
+.contact-3d--timber { --piece-width: 72%; --piece-height: 53%; }
+.contact-3d.is-turned { --piece-turn: 23deg; }
+.contact-3d__ambient { position: absolute; inset: 0; background: radial-gradient(ellipse at var(--light-x) 25%, #fffdf4cc, transparent 64%), linear-gradient(135deg, #f1eada, #d8cbb5); }
+.contact-3d__edition { position: absolute; z-index: 2; top: 1.3rem; left: 1.1rem; color: #6a5b43; font-size: .5rem; letter-spacing: .13em; text-transform: uppercase; writing-mode: vertical-rl; }
+.contact-3d__world { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--view-x)) rotateY(var(--view-y)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.contact-3d__arch { position: absolute; top: 9%; left: 15%; width: 70%; height: 84%; border: 1px solid #b6a38477; border-radius: 50% 50% 0 0; transform: translateZ(-55px); }
+.contact-3d__arch::after { position: absolute; inset: 1rem; border: 1px solid #c8b79755; border-radius: inherit; content: ''; }
+.contact-3d__floor { position: absolute; bottom: 7%; left: 12%; width: 76%; height: 12%; border: 1px solid #c2b398; background: linear-gradient(135deg, #e9dcc2, #bba581); box-shadow: 0 9px 0 #b29c78, 0 20px 25px #54412b26; transform: rotateX(66deg) translateZ(-20px); }
+.contact-3d__shadow { position: absolute; left: 27%; bottom: 13%; width: 49%; height: 6%; border-radius: 50%; background: #47321b55; filter: blur(12px); transform: translateZ(-15px) rotateX(65deg); }
+.contact-3d__arrival { position: absolute; top: 44%; left: 50%; width: var(--piece-width); height: var(--piece-height); transform: translate(-50%, -50%); transform-style: preserve-3d; }
+.contact-3d__piece { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(var(--piece-turn)); transition: transform 1s cubic-bezier(.2,.7,.15,1); }
+.contact-3d__face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; transform: translateZ(10px); background: #b78e61; box-shadow: 0 0 0 1px #9b77514d; }
+.contact-3d__face img { width: 100%; height: 100%; object-fit: cover; }
+.contact-3d--windows .contact-3d__face { border: 5px solid #a98453; }
+.contact-3d__sheen { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, #fff7df38, transparent 40%, #24170714); }
+.contact-3d__edge { position: absolute; backface-visibility: hidden; background: repeating-linear-gradient(90deg, #957044 0, #a68150 2px, #987143 4px, #bb9360 7px); }
+.contact-3d__edge--right { top: 0; left: 100%; width: 20px; height: 100%; transform-origin: left; transform: translateZ(10px) rotateY(90deg); }
+.contact-3d__edge--left { top: 0; right: 100%; width: 20px; height: 100%; transform-origin: right; transform: translateZ(10px) rotateY(-90deg); }
+.contact-3d__edge--top { left: 0; bottom: 100%; width: 100%; height: 20px; transform-origin: bottom; transform: translateZ(10px) rotateX(90deg); background: #c4a273; }
+.contact-3d__seal { position: absolute; right: 15%; bottom: 22%; display: grid; width: 56px; height: 56px; place-items: center; transform: translateZ(65px) rotateY(-8deg); }
+.contact-3d__seal img { position: absolute; top: 50%; left: 50%; display: block; width: 145%; height: 145%; max-width: none; object-fit: contain; transform: translate(-50%, -50%); filter: drop-shadow(3px 7px 5px #58412138); }
+.contact-3d__controls { position: absolute; z-index: 3; right: 1rem; bottom: .9rem; left: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.contact-3d__turn { display: inline-flex; min-height: 44px; align-items: center; gap: .6rem; padding: .5rem .75rem; border: 1px solid #b3a184; border-radius: 2px; background: #fbf8f1ed; color: #554733; font-size: .625rem; }
+.contact-3d__turn svg { transition: transform .6s ease; }
+.contact-3d__turn[aria-pressed='true'] svg { transform: rotate(-30deg); }
+.contact-3d__turn:hover { background: #fffaf0; border-color: #776244; }
+.contact-3d__enquire { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--paper-light); color: var(--ink); transition: background .25s, color .25s; }
+.contact-3d__enquire:hover { background: var(--forest); color: var(--paper-light); }
+.contact-3d[data-scene-motion='full'] .contact-3d__arrival { animation: contact-3d-arrive 1.3s cubic-bezier(.16,1,.3,1) both; }
+@keyframes contact-3d-arrive { from { transform: translate(-50%, -44%) translateZ(-65px) rotateY(-26deg); } to { transform: translate(-50%, -50%) translateZ(0) rotateY(0); } }
+.contact-3d[data-scene-motion='still'] .contact-3d__world { transform: none; }
+.contact-3d[data-scene-motion='still'] *, .contact-3d[data-scene-motion='still'] *::after { animation: none !important; transition: none !important; }
+@media (max-width: 1100px) { .contact-3d { height: 420px; } }
+@media (max-width: 850px) { .contact-3d { height: 365px; --piece-width: 39%; --piece-height: 74%; } .contact-3d--windows { --piece-width: 51%; --piece-height: 70%; } .contact-3d--timber { --piece-width: 68%; --piece-height: 45%; } .contact-3d__seal { width: 45px; height: 45px; right: 10%; } }
+@media (max-width: 600px) { .contact-3d { height: 350px; --piece-width: 34%; } .contact-3d--windows { --piece-width: 46%; } .contact-3d--timber { --piece-width: 71%; --piece-height: 47%; } .contact-3d__seal { right: 13%; } }
+@media (prefers-reduced-motion: reduce) { .contact-3d__world { transform: none; } .contact-3d *, .contact-3d *::after { animation: none !important; transition: none !important; } }

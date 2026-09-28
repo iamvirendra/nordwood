@@ -1,6 +1,7 @@
 import { woodGuides } from './woodGuides';
+import seoBlogContent from './seoBlogContent.json';
 
-export const blogPosts = [
+const journalPosts = [
   ...woodGuides,
   {
     id: 'finding-the-right-door-proportions',
@@ -33,15 +34,8 @@ export const blogPosts = [
   {
     id: 'choosing-wood-with-the-whole-room-in-mind',
     category: 'Materials',
-    title: 'Read the grain. Then read the room.',
-    excerpt: 'Make your wood choice alongside the colours and materials it will live with.',
-    paragraphs: [
-      'Wood brings a visible pattern into a room. Before deciding which direction to take, gather the surrounding materials: a wall colour, a flooring sample, a photograph of existing furniture. Place them together and look at the balance of light and dark. The aim is not to match every surface exactly, but to understand which material should feel prominent and which should sit quietly.',
-      'Our door collection offers Plantation Teak, Forest Teak and Imported Teak. Use these names to organise your comparison, then ask to see current product photographs when discussing your choice. The images on the website are illustrative. They can help you consider a composition, but they should not be treated as confirmation of the exact grain, colour or finish of the piece you will receive.',
-      'Keep a short note beside each option describing what you respond to: a calmer pattern, a warmer impression or a closer relationship to an existing cabinet. These are preferences to discuss, rather than properties to assume from a wood name alone. Review the intended finish at the same time and confirm the combination before ordering, with your room references close at hand.',
-    ],
-    takeaway: 'Compare wood choices with your room materials and request current photos before confirming the design and finish.',
-    readTime: '2 min read',
+    ...seoBlogContent['choosing-wood-with-the-whole-room-in-mind'],
+    takeaway: 'Start with exposure and the actual timber, then agree the finished sizes, construction, seasoning and installation.',
     imageKeys: ['workshop', 'detail', 'entry'],
   },
   {
@@ -80,7 +74,7 @@ export const blogPosts = [
     paragraphs: [
       'A handle may occupy a small part of a door, but it often becomes a point of attention. Its shape, colour and placement sit against a much larger wood surface. Rather than choosing those elements in separate moments, collect them into one simple reference board. Include the door direction you like, the proposed hardware and the wall or floor finish nearby.',
       'Look for a clear relationship between the details. You might prefer similar tones throughout, or a quieter door surface with a more noticeable handle. Neither approach needs a long list of decorative rules. What matters is making the choice intentionally and viewing the combination together. A photograph of an existing fitting can be particularly useful when part of the room is already finished.',
-      'Treat the reference board as a conversation starter, not as a technical specification. Ask your carpenter or installer to confirm the suitability and positioning of the intended hardware for the selected door. Discuss the actual wood finish with the supplier, and confirm which fittings or other items are included in the order. Website photographs are illustrative, so visible accessories should not be assumed to come with a piece.',
+      'Treat the reference board as a conversation starter, not as a technical specification. Ask your carpenter or installer to confirm the suitability and positioning of the intended hardware for the selected door. Discuss the actual wood finish with the supplier, and confirm which fittings or other items are included in the order. Website photographs show design references, so visible accessories should not be assumed to come with a piece.',
     ],
     takeaway: 'Review the door, finish and hardware together, then confirm compatibility and the exact order contents separately.',
     readTime: '2 min read',
@@ -136,10 +130,27 @@ export const blogPosts = [
     paragraphs: [
       'An enquiry does not need to be a finished design brief. A concise description of the space and the pieces you need is enough to begin. State whether the project involves doors, frames, windows or a combination, and include your city. If you already have a preferred wood or door configuration, mention it; if you are still comparing, explain what remains undecided.',
       'For each opening, add the required height and width with units, the quantity and any relevant photographs. Ask your carpenter to confirm the door dimensions if you are unsure what the measurements represent. Keep different openings on separate lines so their requirements do not become mixed together. A wider room photograph can sit alongside these details to explain the look you are working towards.',
-      'Include questions about the intended finish, current product photographs, fittings and any delivery or installation requirements you need to discuss. The website images are illustrative, and displayed selling prices exclude GST. Before ordering, confirm the selected specifications, what the order includes and the complete amount. The contact form prepares an email draft for you to review and send, so you can refine the note before it leaves your email app.',
+      'Include questions about the intended finish, current product photographs, fittings and any delivery or installation requirements you need to discuss. The website images show design and material references, and displayed selling prices exclude GST. Before ordering, confirm the selected specifications, what the order includes and the complete amount. The contact form prepares a WhatsApp enquiry for you to review and send, so you can refine the note before sharing it with the team.',
     ],
     takeaway: 'Share the product, configuration, labelled dimensions, quantity and city, then list the details you still need confirmed.',
     readTime: '2 min read',
     imageKeys: ['workshop', 'door-frame', 'entry'],
   },
 ];
+
+const buyingGuideId = 'choosing-wood-with-the-whole-room-in-mind';
+const relatedGuideIds = {
+  'plantation-teak-guide': ['forest-teak-guide', 'imported-teak-guide'],
+  'forest-teak-guide': ['plantation-teak-guide', 'imported-teak-guide'],
+  'imported-teak-guide': ['plantation-teak-guide', 'forest-teak-guide'],
+  'malaysian-saal-guide': ['desi-sal-guide', 'kapoor-sal-guide'],
+  'desi-sal-guide': ['kapoor-sal-guide', 'malaysian-saal-guide'],
+  'kapoor-sal-guide': ['desi-sal-guide', 'malaysian-saal-guide'],
+};
+
+export const blogPosts = journalPosts.map(post => ({
+  ...post,
+  relatedPostIds: post.id === buyingGuideId
+    ? woodGuides.map(guide => guide.id)
+    : post.woodType ? [buyingGuideId, ...relatedGuideIds[post.id]] : [],
+}));

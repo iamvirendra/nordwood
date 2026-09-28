@@ -41,7 +41,7 @@
 .shop .product-image-container { height: 330px; aspect-ratio: auto; }
 .shop .product-price { font-size: 1.65rem; }
 .shop .add-to-cart-btn { width: 100%; justify-content: space-between; }
-.shop .product-image { filter: saturate(.85); object-fit: contain; }
+.shop .product-image { object-fit: contain; }
 .no-products { padding: 5rem 1rem; text-align: center; border: 1px solid var(--line); }
 .no-products h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; }
 .no-products p { margin: 1rem 0; color: var(--muted); }

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { products } from '../data/products';
+import { getImageLabel } from '../data/productImages';
 import { getCategoryLabel, getProductFamilies, getProductFamilyById, getVariantSizeLabel } from '../data/catalog';
 import ProductCard from '../components/ProductCard';
+import DoorConstructionNote from '../components/DoorConstructionNote';
 import './ProductDetail.css';
 
 const formatPrice = price => '₹' + price.toLocaleString('en-IN');
@@ -47,10 +49,10 @@ export default function ProductDetail({ onAddToCart }) {
     <div className="pd-layout">
       <div className="pd-gallery-section">
         <div className="pd-gallery" data-page-enter role="region" aria-label="Product photographs" tabIndex={0} aria-keyshortcuts="ArrowLeft ArrowRight" onKeyDown={event => { if (event.key==='ArrowRight' || event.key==='ArrowLeft') { event.preventDefault(); changeImage(imageIndex+(event.key==='ArrowRight'?1:-1)); } }}>
-          <div className="pd-main-image"><img key={activeImage.src} src={activeImage.src} alt={activeImage.alt} width="600" height="800" fetchPriority="high" /><span className="pd-image-badge">{selected.illustrativeImages ? 'Illustrative photo' : activeImage.label}</span><div className="pd-image-controls"><span aria-live="polite">{String(imageIndex+1).padStart(2,'0')} / {String(images.length).padStart(2,'0')}</span><button type="button" onClick={()=>changeImage(imageIndex-1)} aria-label="Previous photograph">←</button><button type="button" onClick={()=>changeImage(imageIndex+1)} aria-label="Next photograph">→</button></div></div>
+          <div className="pd-main-image"><img key={activeImage.src} src={activeImage.src} alt={activeImage.alt} width={activeImage.width || 600} height={activeImage.height || 800} fetchPriority="high" /><span className="pd-image-badge">{getImageLabel(activeImage)}</span><div className="pd-image-controls"><span aria-live="polite">{String(imageIndex+1).padStart(2,'0')} / {String(images.length).padStart(2,'0')}</span><button type="button" onClick={()=>changeImage(imageIndex-1)} aria-label="Previous photograph">←</button><button type="button" onClick={()=>changeImage(imageIndex+1)} aria-label="Next photograph">→</button></div></div>
           <div className="pd-thumbnails">{images.map((image,index)=><button key={`${image.src}-${index}`} type="button" className={imageIndex===index?'is-selected':''} aria-label={`Show photograph ${index+1}: ${image.label}`} aria-pressed={imageIndex===index} onClick={()=>changeImage(index)}><img src={image.src} alt="" width="100" height="110" loading="lazy" /><span>{image.label}</span></button>)}</div>
         </div>
-        {selected.illustrativeImages && <p className="pd-photo-note">Illustrative photos for reference. Final wood grain and finish may vary.</p>}
+        <p className="pd-photo-note">Design and material references. Confirm the final design, wood grain and finish when ordering.</p>
       </div>
       <section className="pd-information" data-page-enter aria-labelledby="product-title">
         <p className="eyebrow">{selected.woodType} / {selected.doorType || getCategoryLabel(selected.category)}</p><h1 id="product-title">{family.name}</h1><p className="pd-description">{selected.description}</p>
@@ -67,6 +69,7 @@ export default function ProductDetail({ onAddToCart }) {
         <div className="pd-specifications" data-motion="rise"><h2>The details</h2><dl><div><dt>Wood type</dt><dd>{selected.woodType}</dd></div>{selected.doorType && <div><dt>Door style</dt><dd>{selected.doorType}</dd></div>}{selected.height && <div><dt>Door height</dt><dd>{selected.height}</dd></div>}{selected.width && <div><dt>Door width</dt><dd>{selected.width}</dd></div>}{selected.woodCFT && <div><dt>Wood volume</dt><dd>{selected.woodCFT} CFT (cubic feet)</dd></div>}{selected.size && <div><dt>Dimensions</dt><dd>{selected.size}</dd></div>}{selected.rebateType && <div><dt>Rebate</dt><dd>{selected.rebateType}</dd></div>}<div><dt>Price basis</dt><dd>Selected standard size · GST extra</dd></div></dl></div>
       </section>
     </div>
+    {selected.category === 'Door' && selected.doorType === 'Single Door' && <DoorConstructionNote />}
     {related.length>0 && <section className="pd-related"><div className="pd-related-heading" data-motion="rise"><div><p className="eyebrow">More to consider</p><h2>Find your natural fit.</h2></div><Link to={`/shop?category=${selected.category}`}>View the collection ↗</Link></div><div className="pd-related-grid">{related.map((product,index)=><ProductCard index={index} key={product.key} product={product} onAddToCart={onAddToCart} />)}</div></section>}
   </div>;
 }

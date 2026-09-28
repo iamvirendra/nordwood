@@ -4,9 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run sitemap",
     "dev": "vite",
-    "build": "vite build",
+    "prebuild": "npm run sitemap",
+    "build": "vite build && node scripts/prerender-blog.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
     "lint": "oxlint",
+    "check:images": "node scripts/verify-image-mappings.mjs",
+    "check:seo": "node scripts/verify-blog-seo.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

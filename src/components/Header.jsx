@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import DeliveryCartLink from './DeliveryCartLink';
+import BrandWordmark from './BrandWordmark';
+import { brandLogo } from '../data/brand';
 import './Header.css';
 
 export default function Header({ cartCount = 0 }) {
@@ -11,10 +13,10 @@ export default function Header({ cartCount = 0 }) {
   return (
     <header className="header header--home">
       <div className="header-container">
-        <Link to="/" className="logo">
-          <img src="/1000687991.svg" alt="NordWood" className="logo-image" />
+        <Link to="/" className="logo" aria-label="NordWood home">
+          <img src={brandLogo.src} width={brandLogo.width} height={brandLogo.height} alt="" className="logo-image" />
           <span className="logo-copy">
-            <span className="logo-name">NordWood</span>
+            <BrandWordmark className="logo-name" decorative loading="eager" />
             <span className="logo-tagline">A material point of view</span>
           </span>
         </Link>

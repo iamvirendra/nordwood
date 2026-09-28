@@ -1,6 +1,7 @@
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import { blogImages } from '../data/blogImages';
+import BlogSeo from '../components/BlogSeo';
 import './Blog.css';
 
 export default function Blog() {
@@ -12,6 +13,7 @@ export default function Blog() {
 
   return (
     <div className="blog">
+      <BlogSeo />
       <header className="blog-masthead">
         <div className="blog-masthead__title" data-page-enter>
           <p className="eyebrow">The NordWood journal</p>
@@ -36,7 +38,7 @@ export default function Blog() {
               <article key={post.id} className={`blog-card${index === 0 ? ' blog-card--featured' : ''}`} data-motion="rise">
                 <Link className="blog-card__link" to={`/blog/${post.id}`} aria-labelledby={`${post.id}-title`}>
                   <div className="blog-card__cover">
-                    <img src={cover.src} alt={cover.alt} width="1200" height="900" style={{ objectFit: cover.fit || 'cover' }} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} decoding="async" />
+                    <img src={cover.src} alt={cover.alt} width={cover.width || 1200} height={cover.height || 900} style={{ objectFit: cover.fit || 'cover' }} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} decoding="async" />
                   </div>
                   <div className="blog-card__content">
                     <div className="blog-card__meta"><span>{post.category}</span><span>{post.readTime}</span></div>
@@ -52,7 +54,7 @@ export default function Blog() {
             );
           })}
         </div>
-        <p className="blog-photo-note">Photography is illustrative. Final wood grain, colour and finish may vary.</p>
+        <p className="blog-photo-note">Images are material and design references. Final wood grain, colour and finish may vary.</p>
       </section>
     </div>
   );

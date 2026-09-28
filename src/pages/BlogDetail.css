@@ -17,6 +17,8 @@
 .blog-detail__read-time { padding-left: 1rem; border-left: 1px solid var(--line); color: var(--muted); font-size: .625rem; }
 .blog-detail__header h1 { max-width: 1040px; margin-top: 1.5rem; font-family: var(--serif); font-size: clamp(3rem, 5.3vw, 5.6rem); font-weight: 400; letter-spacing: -.055em; line-height: 1.08; text-wrap: balance; }
 .blog-detail__excerpt { max-width: 650px; margin-top: 1.5rem; color: var(--muted); font-size: 1.0625rem; line-height: 1.8; }
+.blog-detail__byline { margin-top: 1rem; color: var(--muted); font-size: .75rem; line-height: 1.7; }
+.blog-detail__byline a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
 .blog-detail__body { display: grid; grid-template-columns: 1.05fr .95fr; align-items: start; gap: clamp(2rem, 5.4vw, 5.5rem); }
 .blog-detail__gallery { min-width: 0; }
 .blog-detail__photo-note { max-width: 440px; margin-top: 1.1rem; color: var(--muted); font-size: .6875rem; line-height: 1.8; }
@@ -27,8 +29,30 @@
 .blog-detail__section h2 { margin-bottom: .8rem; font-family: var(--serif); font-size: clamp(1.65rem, 2.4vw, 2.2rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2; }
 .blog-detail__section p, .blog-detail__section li { color: var(--ink-soft); font-size: .9375rem; line-height: 1.9; }
 .blog-detail__section p + p { margin-top: 1rem; }
-.blog-detail__section ul { padding-left: 1.2rem; margin: .8rem 0 0; }
+.blog-detail__section h3 { margin: 1.5rem 0 .65rem; font-size: 1rem; font-weight: 500; line-height: 1.5; scroll-margin-top: 9rem; }
+.blog-detail__section :is(ul, ol) { padding-left: 1.2rem; margin: .8rem 0 1rem; }
 .blog-detail__section li + li { margin-top: .5rem; }
+.blog-detail__contents { margin-block: 1.5rem 2rem; padding: 1rem 1.2rem; border-block: 1px solid var(--line); background: var(--paper-light); }
+.blog-detail__contents summary { min-height: 44px; align-content: center; cursor: pointer; color: var(--accent-ink); font-size: .875rem; }
+.blog-detail__contents summary:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 5px; }
+.blog-detail__contents ol { margin: .5rem 0; padding-left: 1.2rem; }
+.blog-detail__contents a { display: inline-block; padding-block: .4rem; font-size: .8125rem; line-height: 1.6; text-decoration: underline; text-underline-offset: 3px; }
+.blog-detail__table-scroll { max-width: 100%; overflow-x: auto; margin-block: 1.3rem; border: 1px solid var(--line); overscroll-behavior-x: contain; }
+.blog-detail__table-scroll table { width: 100%; min-width: 460px; border-collapse: collapse; font-size: .8125rem; line-height: 1.7; text-align: left; }
+.blog-detail__table-scroll caption { padding: .85rem 1rem; color: var(--muted); font-size: .75rem; text-align: left; }
+.blog-detail__table-scroll :is(th, td) { padding: .85rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
+.blog-detail__table-scroll thead { background: var(--surface-muted); }
+.blog-detail__table-scroll th { font-weight: 500; }
+.blog-detail__table-scroll tbody th { min-width: 130px; }
+.blog-detail__table-scroll tbody tr:nth-child(even) { background: var(--paper-light); }
+.blog-detail__project-links { display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; margin-top: 1.5rem; padding-block: 1rem; border-block: 1px solid var(--line); }
+.blog-detail__project-links p { width: 100%; margin-bottom: .3rem; color: var(--muted); font-size: .6875rem; text-transform: uppercase; letter-spacing: .1em; }
+.blog-detail__project-links a { display: inline-flex; min-height: 44px; align-items: center; gap: .5rem; color: var(--accent-ink); font-size: .8125rem; text-decoration: underline; text-underline-offset: 4px; }
+.blog-detail__related { margin-top: 2rem; }
+.blog-detail__related h2 { font-family: var(--serif); font-size: 1.5rem; line-height: 1.3; font-weight: 400; }
+.blog-detail__related ul { margin-top: .8rem; list-style: none; padding: 0; }
+.blog-detail__related a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; padding-block: .65rem; border-bottom: 1px solid var(--line); font-size: .875rem; line-height: 1.6; }
+.blog-detail__related a:hover { color: var(--accent-ink); }
 .blog-detail__wood-action { margin-top: 1.5rem; padding: 1.3rem 1.4rem; background: var(--surface-muted); }
 .blog-detail__wood-action p { color: var(--muted); font-size: .8125rem; }
 .blog-detail__wood-action a { display: flex; min-height: 44px; justify-content: space-between; align-items: center; gap: 1rem; margin-top: .4rem; font-size: .875rem; }

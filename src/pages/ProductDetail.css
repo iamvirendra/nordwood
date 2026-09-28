@@ -12,9 +12,9 @@
 .pd-image-controls > span { padding-right: .6rem; font-size: .75rem; letter-spacing: .07em; }
 .pd-image-controls button { width: 44px; height: 44px; background: transparent; color: var(--ink); font-size: 1.2rem; }
 .pd-image-controls button:hover { background: var(--surface-muted); }
-.pd-thumbnails { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .9rem; }
-.pd-thumbnails button { width: 102px; padding: 0 0 .4rem; border: 1px solid transparent; background: transparent; color: var(--muted); text-align: left; }
-.pd-thumbnails button > img { width: 100px; height: 94px; object-fit: cover; opacity: .75; }
+.pd-thumbnails { display: flex; gap: .75rem; margin-top: .9rem; padding-bottom: .5rem; overflow-x: auto; }
+.pd-thumbnails button { width: 102px; flex-shrink: 0; padding: 0 0 .4rem; border: 1px solid transparent; background: transparent; color: var(--muted); text-align: left; }
+.pd-thumbnails button > img { width: 100px; height: 94px; object-fit: contain; opacity: .75; }
 .pd-thumbnails button > span { display: block; padding: .45rem .25rem 0; font-size: .6875rem; }
 .pd-thumbnails button.is-selected { border-color: var(--muted); color: var(--ink); }
 .pd-thumbnails button.is-selected > img, .pd-thumbnails button:hover > img { opacity: 1; }

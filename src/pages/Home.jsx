@@ -51,7 +51,7 @@ export default function Home({ onAddToCart }) {
           {categoryItems.map(category => {
             const image = getProductImages(category.label, category.value)[0];
             return <Link key={category.value} to={`/shop?category=${category.value}`} className="collection-card" data-reveal>
-              <div className="collection-card-image"><img src={image.src} alt={image.alt} width="600" height="900" loading="lazy" /><span className="category-number">{category.number}</span></div>
+              <div className="collection-card-image"><img src={image.src} alt={image.alt} width={image.width || 600} height={image.height || 900} loading="lazy" /><span className="category-number">{category.number}</span></div>
               <div className="category-copy"><p>{category.eyebrow}</p><h3>{category.label}</h3><span>{category.description}</span></div>
               <span className="category-arrow"><Arrow diagonal /></span>
             </Link>;
@@ -67,12 +67,12 @@ export default function Home({ onAddToCart }) {
           {woodGuides.map((guide, index) => {
             const cover = blogImages[guide.imageKeys[0]];
             return <Link key={guide.id} to={`/blog/${guide.id}`} className="wood-guide-card" aria-labelledby={`${guide.id}-label`} data-reveal>
-              <div className="wood-guide-image"><img src={cover.src} alt={cover.alt} width="1200" height="800" loading="lazy" decoding="async" /><span>{String(index + 1).padStart(2, '0')}</span></div>
+              <div className="wood-guide-image"><img src={cover.src} alt={cover.alt} width={cover.width || 1200} height={cover.height || 800} loading="lazy" decoding="async" /><span>{String(index + 1).padStart(2, '0')}</span></div>
               <div className="wood-guide-copy"><h3 id={`${guide.id}-label`}>{guide.woodType}</h3><p>{guide.summary}</p><span className="wood-guide-link">Explore the wood <Arrow diagonal /></span></div>
             </Link>;
           })}
         </div>
-        <p className="wood-guide-photo-note">Illustrative wood studies. Natural grain and colour vary from board to board.</p>
+        <p className="wood-guide-photo-note">Material references. Natural grain and colour vary from board to board.</p>
       </section>
       <Heritage />
       <TimberCraft />

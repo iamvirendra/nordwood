@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMotion } from '../motion/MotionContext';
+import { brandLogo } from '../data/brand';
 import './HeroCarousel.css';
 
 const slides = [
   { src: '/images/hero-carved-entry.jpg', width: 1792, height: 2400, label: 'A beautiful first impression', alt: 'Open wooden double doors with carved floral frames, panelled leaves and brass handles' },
-  { src: '/images/hero-wood-signature.jpg', width: 2752, height: 1536, label: 'Character in every grain', alt: 'The NordWood monogram carved into a light wooden panel, showing the natural grain' },
+  { ...brandLogo, label: 'Character in every grain' },
   { src: '/images/hero-door-designs.jpg', width: 2752, height: 1536, label: 'Details that make it yours', alt: 'Three wooden door designs in a bright room, with brass grille, carved floral and oval panel details' },
   { src: '/images/hero-door-collection.jpg', width: 1376, height: 768, label: 'An opening for every home', alt: 'A collection of six wooden door designs in different tones and architectural settings' },
 ];

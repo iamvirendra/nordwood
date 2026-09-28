@@ -1,5 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import BlogCarousel from '../components/BlogCarousel';
+import BlogSeo from '../components/BlogSeo';
+import ArticleBlocks from '../components/ArticleBlocks';
 import { blogPosts } from '../data/blogPosts';
 import { blogImages } from '../data/blogImages';
 import './BlogDetail.css';
@@ -20,6 +22,7 @@ export default function BlogDetail() {
   if (!post) {
     return (
       <div className="blog-detail blog-detail--not-found">
+        <BlogSeo notFound />
         <div className="blog-detail__empty" data-page-enter>
           <p className="blog-detail__eyebrow">The NordWood journal</p>
           <h1>Story not found.</h1>
@@ -31,9 +34,11 @@ export default function BlogDetail() {
   }
 
   const nextPost = blogPosts[(postIndex + 1) % blogPosts.length];
+  const relatedPosts = (post.relatedPostIds || []).map(postId => blogPosts.find(candidate => candidate.id === postId)).filter(Boolean);
 
   return (
     <div className={`blog-detail${post.woodType ? ' blog-detail--wood-guide' : ''}`}>
+      <BlogSeo post={post} />
       <div className="blog-detail__inner">
         <nav className="blog-detail__navigation" aria-label="Journal navigation">
           <Link to="/blog" className="blog-detail__back"><JournalArrow back /> Back to journal</Link>
@@ -49,21 +54,27 @@ export default function BlogDetail() {
             </div>
             <h1 id="blog-detail-title">{post.title}</h1>
             <p className="blog-detail__excerpt">{post.excerpt}</p>
+            {post.seo && <p className="blog-detail__byline">Published by <Link to="/about">NordWood</Link> · Timber and joinery guides</p>}
           </header>
 
           <div className="blog-detail__body">
             <div className="blog-detail__gallery" data-motion="image">
               <BlogCarousel key={post.id} images={post.imageKeys.map(imageKey => blogImages[imageKey])} title={post.title} priority />
-              <p className="blog-detail__photo-note">Photography is illustrative. Final wood grain, colour and finish may vary.</p>
+              <p className="blog-detail__photo-note">Images are material and design references. Final wood grain, colour and finish may vary.</p>
             </div>
 
-            <div className="blog-detail__copy" data-motion="rise">
+            <div className="blog-detail__copy">
               {post.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+              {post.sections?.length > 0 && <details className="blog-detail__contents">
+                <summary>In this guide</summary>
+                <nav aria-label="Article contents"><ol>{post.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ol></nav>
+              </details>}
               {post.sections?.map(section => (
                 <section key={section.id} id={section.id} className="blog-detail__section" aria-labelledby={`${section.id}-title`}>
                   <h2 id={`${section.id}-title`}>{section.title}</h2>
                   {section.paragraphs?.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
                   {section.bullets?.length > 0 && <ul>{section.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>}
+                  {section.blocks && <ArticleBlocks blocks={section.blocks} sectionTitle={section.title} />}
                 </section>
               ))}
               <aside className="blog-detail__takeaway" aria-label="A detail to remember">
@@ -71,6 +82,17 @@ export default function BlogDetail() {
                 <p>{post.takeaway}</p>
               </aside>
               {post.woodType && <div className="blog-detail__wood-action"><p>Bring the material into your home.</p><Link to={`/shop?${new URLSearchParams({ category: post.shopCategory, wood: post.woodType })}`}>Explore {post.woodType} <JournalArrow /></Link></div>}
+              {post.seo && <div className="blog-detail__project-links">
+                <p>Plan your next opening</p>
+                <Link to="/shop?category=Door">Wooden doors</Link>
+                <Link to="/shop?category=DoorFrame">Door frames and chaukhat</Link>
+                <Link to="/shop?category=Window">Wooden windows</Link>
+                <Link to="/contact">Discuss your project with NordWood <span aria-hidden="true">↗</span></Link>
+              </div>}
+              {relatedPosts.length > 0 && <nav className="blog-detail__related" aria-label="Related timber guides">
+                <h2>Continue your timber research</h2>
+                <ul>{relatedPosts.map(related => <li key={related.id}><Link to={`/blog/${related.id}`}>{related.title} <span aria-hidden="true">↗</span></Link></li>)}</ul>
+              </nav>}
               {post.sources?.length > 0 && <section className="blog-detail__sources" aria-label="Further reading"><h2>Further reading</h2><ul>{post.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a></li>)}</ul></section>}
             </div>
           </div>

@@ -1,0 +1,65 @@
+.contact-handoff { overflow: hidden; padding: 1.5rem; border: 1px solid #c4cdbd; border-radius: 3px; background: #f2f4ee; scroll-margin-top: 8rem; }
+.contact-handoff__recipient { display: flex; align-items: center; gap: .8rem; padding-bottom: 1.2rem; border-bottom: 1px solid #d7dfd1; color: var(--forest); }
+.contact-handoff__recipient > svg { flex-shrink: 0; }
+.contact-handoff__recipient > div { display: grid; gap: .15rem; }
+.contact-handoff__recipient strong { font-size: .8rem; font-weight: 600; }
+.contact-handoff__recipient div > span { color: var(--muted); font-size: .68rem; line-height: 1.6; }
+.contact-handoff__channel { margin-left: auto; padding: .4rem .6rem; border: 1px solid #c4cdbd; border-radius: 2px; color: var(--forest); font-size: .58rem; line-height: 1.4; }
+.contact-handoff__journey { display: flex; max-width: 24rem; align-items: flex-start; margin: 2rem auto 1.7rem; padding-inline: .4rem; perspective: 620px; }
+.contact-handoff__person { position: relative; z-index: 1; display: grid; width: 48px; flex: 0 0 48px; justify-items: center; gap: .8rem; perspective: 240px; }
+.contact-handoff__person > span { display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid #b8c4af; border-radius: 50%; background: linear-gradient(145deg, #fffef9, #e2e8d9); color: var(--forest); box-shadow: 0 4px 0 #bbc5af, 2px 9px 12px #253b2320, inset 0 1px 1px #fff; transform: rotateX(12deg) rotateY(-12deg); }
+.contact-handoff__person small { color: var(--muted); font-size: .625rem; white-space: nowrap; }
+.contact-handoff__person--team > span { position: relative; border: 0; background: none; box-shadow: none; transform: rotateX(12deg) rotateY(12deg); }
+.contact-handoff__person--team img { position: absolute; top: 50%; left: 50%; display: block; width: 145%; height: 145%; max-width: none; object-fit: contain; transform: translate(-50%, -50%); filter: drop-shadow(2px 5px 4px #253b2330); }
+.contact-handoff__route { position: relative; height: 48px; flex: 1; margin-inline: .7rem; perspective: 380px; }
+.contact-handoff__trail { position: absolute; top: 23px; right: 0; left: 0; height: 1px; background: repeating-linear-gradient(to right, #9caa91 0, #9caa91 4px, transparent 4px, transparent 9px); }
+.contact-handoff__plane { position: absolute; top: 6px; left: 50%; width: 44px; height: 34px; transform-style: preserve-3d; transform: translateX(-50%) rotateX(16deg) rotateY(-12deg) rotateZ(-6deg); }
+.contact-handoff__plane::after { content: ''; position: absolute; top: 18px; left: 3px; width: 35px; height: 14px; border-radius: 50%; background: radial-gradient(ellipse, #283a2440, #283a2400 70%); transform: translate3d(0, 12px, -22px) rotateX(64deg); }
+.contact-handoff__wing, .contact-handoff__fold { position: absolute; inset: 0; transform-origin: 50% 50%; }
+.contact-handoff__wing--upper { background: linear-gradient(170deg, #fff9e7, #f7dfa7 58%, #b5843e); clip-path: polygon(0 0, 100% 50%, 25% 50%); transform: rotateX(29deg); }
+.contact-handoff__wing--lower { background: linear-gradient(15deg, #b98139, #e7bd75 48%, #f9e8c2); clip-path: polygon(25% 50%, 100% 50%, 0 100%); transform: rotateX(-31deg); }
+.contact-handoff__fold { background: linear-gradient(160deg, #9a6934, #cd9b50); clip-path: polygon(25% 50%, 100% 50%, 13% 69%); transform: translateZ(-2px); }
+.contact-handoff.is-preparing .contact-handoff__plane { animation: handoff-message-travel 900ms cubic-bezier(.25,.55,.25,1) both; }
+.contact-handoff.is-ready .contact-handoff__plane { left: calc(100% - 12px); }
+.contact-handoff.is-ready .contact-handoff__person--team > span { box-shadow: 0 0 0 5px #c4cdbd66; }
+.contact-handoff__copy { text-align: center; }
+.contact-handoff__eyebrow { color: var(--accent-ink); font-size: .6rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; }
+.contact-handoff__copy h3 { margin-top: .6rem; color: var(--ink); font-family: var(--serif); font-size: clamp(1.7rem, 2.1vw, 2rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2; scroll-margin-top: 8rem; }
+.contact-handoff__copy h3:focus { outline: none; }
+.contact-handoff__copy > p:last-child { max-width: 25rem; margin: .8rem auto 0; color: var(--muted); font-size: .78rem; line-height: 1.8; }
+.contact-handoff__preparing { display: flex; min-height: 94px; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; }
+.contact-handoff__preparing > button { min-height: 44px; padding: .3rem .5rem; border: 0; background: none; color: var(--accent-ink); font-size: .65rem; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.contact-handoff__loading { display: flex; gap: .35rem; margin-top: 1rem; }
+.contact-handoff__loading i { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-ink); animation: handoff-loading .7s ease-in-out infinite alternate; }
+.contact-handoff__loading i:nth-child(2) { animation-delay: .15s; }
+.contact-handoff__loading i:nth-child(3) { animation-delay: .3s; }
+.contact-handoff__snapshot { display: grid; gap: .3rem; margin-top: 1.6rem; padding: 1rem; border: 1px solid #d7dfd1; background: #ffffff80; }
+.contact-handoff__snapshot > span { color: var(--muted); font-size: .55rem; letter-spacing: .12em; }
+.contact-handoff__snapshot strong { color: var(--ink); font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.4; overflow-wrap: anywhere; }
+.contact-handoff__snapshot > p { color: var(--muted); font-size: .7rem; line-height: 1.6; overflow-wrap: anywhere; }
+.contact-handoff__review { margin-top: .75rem; border-color: #d7dfd1; }
+.contact-handoff__review .enquiry-review-content { padding-bottom: 1rem; }
+.contact-handoff__review pre { max-height: 24rem; margin-top: 0; overflow: auto; }
+.contact-handoff__actions { display: flex; align-items: center; gap: 1rem; margin-top: 1.3rem; }
+.contact-handoff__open { flex: 1; text-decoration: none; }
+.contact-handoff__actions .enquiry-back { flex-shrink: 0; font-size: .7rem; }
+.contact-handoff__note { margin-top: .85rem; color: var(--muted); font-size: .625rem; line-height: 1.8; }
+@keyframes handoff-message-travel {
+  0% { left: 0; transform: translate3d(-50%, 7px, -25px) rotateX(35deg) rotateY(-26deg) rotateZ(-18deg); }
+  48% { left: 48%; transform: translate3d(-50%, -16px, 45px) rotateX(-23deg) rotateY(16deg) rotateZ(-8deg); }
+  76% { transform: translate3d(-50%, -9px, 24px) rotateX(24deg) rotateY(-9deg) rotateZ(5deg); }
+  100% { left: calc(100% - 12px); transform: translate3d(-50%, 0, 0) rotateX(16deg) rotateY(-12deg) rotateZ(-6deg); }
+}
+@keyframes handoff-loading { from { opacity: .35; transform: translateY(0); } to { opacity: 1; transform: translateY(-3px); } }
+@media (max-width: 560px) {
+  .contact-handoff { padding: 1.1rem; }
+  .contact-handoff__channel { display: none; }
+  .contact-handoff__recipient { gap: .65rem; }
+  .contact-handoff__recipient div > span { font-size: .65rem; }
+  .contact-handoff__journey { margin-inline: .4rem; }
+  .contact-handoff__actions { flex-wrap: wrap; gap: .55rem; }
+  .contact-handoff__open { flex-basis: 100%; }
+  .contact-handoff__actions .enquiry-back { width: 100%; }
+  .contact-handoff__note { margin-top: .25rem; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { .contact-handoff *, .contact-handoff *::before, .contact-handoff *::after { animation: none !important; transition: none !important; } }

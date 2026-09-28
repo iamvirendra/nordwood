@@ -1,0 +1,324 @@
+{
+  "singleDoors": [
+    {
+      "src": "/images/catalog/single-doors/door-03-classic-raised-panel-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Classic raised panels",
+      "alt": "Symmetrical rectangular raised panels on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-02-floral-carved-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Floral carving",
+      "alt": "An ornate central floral carving with raised panels on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-04-radial-carved-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Radial carving",
+      "alt": "Concentric semicircular carving from the left edge on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-05-oval-chevron-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Oval chevron",
+      "alt": "An oval chevron feature with curved rails on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-06-traditional-raised-panel-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Traditional panels",
+      "alt": "Traditional raised rectangular panels on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-07-oval-chevron-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Oval chevron variation",
+      "alt": "An oval chevron feature with broad mouldings on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-08-asymmetric-five-panel-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Asymmetric panel design",
+      "alt": "One tall panel beside five stacked panels on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-09-seven-panel-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Seven panels",
+      "alt": "Three upper panels, a horizontal middle panel and three lower panels on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/single-doors/door-10-arched-panel-unpolished.webp",
+      "width": 1024,
+      "height": 1536,
+      "label": "Arched panel",
+      "alt": "An arched upper panel and a rectangular lower panel on an unpolished single wooden door",
+      "kind": "design",
+      "fit": "contain"
+    }
+  ],
+  "windows": [
+    {
+      "src": "/images/catalog/windows/casement-window.jpg",
+      "width": 600,
+      "height": 600,
+      "label": "Casement design",
+      "alt": "Wooden glazed window with two side casements and a fixed central pane",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/windows/arched-transom-window.jpg",
+      "width": 333,
+      "height": 500,
+      "label": "Decorative transom",
+      "alt": "Wooden glazed window with a decorative arched transom",
+      "kind": "design",
+      "fit": "contain"
+    },
+    {
+      "src": "/images/catalog/windows/paired-casement-window.jpg",
+      "width": 447,
+      "height": 447,
+      "label": "Paired casements",
+      "alt": "A pair of six-pane wooden window casements",
+      "kind": "design",
+      "fit": "contain"
+    }
+  ],
+  "materials": {
+    "Plantation Teak": [
+      {
+        "src": "/images/catalog/materials/plantation-teak/04-plantation-teak-grain-closeup.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Grain detail",
+        "alt": "Close view of the grain on a timber board from the supplied Plantation Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Plantation Teak"
+      },
+      {
+        "src": "/images/catalog/materials/plantation-teak/03-plantation-teak-sawn-timber.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Sawn timber",
+        "alt": "A stack of sawn timber boards from the supplied Plantation Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Plantation Teak"
+      },
+      {
+        "src": "/images/catalog/materials/plantation-teak/01-plantation-teak-round-logs.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Round logs",
+        "alt": "Round logs stacked outdoors from the supplied Plantation Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Plantation Teak"
+      },
+      {
+        "src": "/images/catalog/materials/plantation-teak/02-plantation-teak-log-detail.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Log detail",
+        "alt": "A closer view of stacked log ends from the supplied Plantation Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Plantation Teak"
+      },
+      {
+        "src": "/images/catalog/materials/plantation-teak/05-plantation-teak-timber-selection.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Timber selection",
+        "alt": "Selected timber boards laid together from the supplied Plantation Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Plantation Teak"
+      }
+    ],
+    "Forest Teak": [
+      {
+        "src": "/images/catalog/materials/forest-teak/sawn-timber-wide.webp",
+        "width": 1672,
+        "height": 941,
+        "label": "Sawn timber",
+        "alt": "Two sawn timber boards on a light background from the supplied Forest Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Forest Teak"
+      },
+      {
+        "src": "/images/catalog/materials/forest-teak/warehouse-logs-wide.webp",
+        "width": 1672,
+        "height": 941,
+        "label": "Warehouse logs",
+        "alt": "Stacks of logs inside a warehouse from the supplied Forest Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Forest Teak"
+      },
+      {
+        "src": "/images/catalog/materials/forest-teak/outdoor-logs-wide.webp",
+        "width": 1672,
+        "height": 941,
+        "label": "Outdoor logs",
+        "alt": "Logs stored outdoors from the supplied Forest Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Forest Teak"
+      },
+      {
+        "src": "/images/catalog/materials/forest-teak/depot-detail-wide.webp",
+        "width": 1672,
+        "height": 941,
+        "label": "Depot detail",
+        "alt": "A closer view of timber in a depot from the supplied Forest Teak image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Forest Teak"
+      }
+    ],
+    "Kapoor Sal": [
+      {
+        "src": "/images/catalog/materials/kapoor-sal/05-kapur-actual-grain-closeup.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Grain detail",
+        "alt": "Close view of reddish timber grain from the supplied Kapoor Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Kapoor Sal"
+      },
+      {
+        "src": "/images/catalog/materials/kapoor-sal/04-kapur-actual-chaukhat-stock.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Chaukhat stock",
+        "alt": "Stacks of timber sections for chaukhat frames from the supplied Kapoor Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Kapoor Sal"
+      },
+      {
+        "src": "/images/catalog/materials/kapoor-sal/03-kapur-actual-sawn-flat-sections.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Sawn sections",
+        "alt": "Flat sawn timber sections from the supplied Kapoor Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Kapoor Sal"
+      },
+      {
+        "src": "/images/catalog/materials/kapoor-sal/01-kapur-actual-round-logs.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Round logs",
+        "alt": "Round timber logs from the supplied Kapoor Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Kapoor Sal"
+      },
+      {
+        "src": "/images/catalog/materials/kapoor-sal/02-kapur-actual-log-lengths.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Log lengths",
+        "alt": "Long timber logs in stock from the supplied Kapoor Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Kapoor Sal"
+      }
+    ],
+    "Desi Sal": [
+      {
+        "src": "/images/catalog/materials/desi-sal/05-saal-natural-grain-closeup.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Grain detail",
+        "alt": "Close view of natural timber grain from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      },
+      {
+        "src": "/images/catalog/materials/desi-sal/04-sawn-saal-timber-stack.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Timber stack",
+        "alt": "Sawn timber stacked in layers from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      },
+      {
+        "src": "/images/catalog/materials/desi-sal/01-raw-saal-log-stack.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Raw logs",
+        "alt": "A stack of raw timber logs from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      },
+      {
+        "src": "/images/catalog/materials/desi-sal/02-saal-log-end-grain.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "End grain",
+        "alt": "The end grain of a timber log from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      },
+      {
+        "src": "/images/catalog/materials/desi-sal/03-saal-sawn-timber-pile.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Sawn timber pile",
+        "alt": "A pile of sawn timber pieces from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      },
+      {
+        "src": "/images/catalog/materials/desi-sal/04-saal-sawn-faces-from-video.webp",
+        "width": 1536,
+        "height": 1024,
+        "label": "Sawn faces",
+        "alt": "Exposed sawn timber faces from the supplied Desi Sal image set",
+        "kind": "material",
+        "fit": "contain",
+        "material": "Desi Sal"
+      }
+    ]
+  }
+}
