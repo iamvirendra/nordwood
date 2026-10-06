@@ -14,13 +14,11 @@ export default function Shop({ onAddToCart }) {
   const height = params.get('height') || '';
   const width = params.get('width') || '';
   const price = params.get('price') || '';
-  const query = params.get('q') || '';
-  const sort = params.get('sort') || 'price-low';
   const categoryProducts = products.filter(product => !category || product.category === category);
   const woods = [...new Set(categoryProducts.map(product => product.woodType))];
   const heights = [...new Set(categoryProducts.map(product => product.height).filter(Boolean))].sort((a,b) => parseFloat(a)-parseFloat(b));
   const widths = [...new Set(categoryProducts.map(product => product.width).filter(Boolean))].sort((a,b) => parseFloat(a)-parseFloat(b));
-  const activeFilterCount = [wood,doorType,height,width,price,query].filter(Boolean).length;
+  const activeFilterCount = [wood,doorType,height,width,price].filter(Boolean).length;
   const updateFilter = (key, value) => {
     const next = new URLSearchParams(params);
     if (!next.has('category')) next.set('category', category || 'all');
@@ -39,10 +37,10 @@ export default function Shop({ onAddToCart }) {
       if (price === 'under20000' && product.price >= 20000) return false;
       if (price === '20000-30000' && (product.price < 20000 || product.price > 30000)) return false;
       if (price === 'over30000' && product.price <= 30000) return false;
-      return !query || `${product.name} ${product.woodType} ${product.doorType || ''} ${getCategoryLabel(product.category)}`.toLowerCase().includes(query.toLowerCase().trim());
+      return true;
     });
-    return getProductFamilies(matching).sort((a,b) => sort === 'price-low' ? a.price-b.price : sort === 'price-high' ? b.price-a.price : a.name.localeCompare(b.name));
-  }, [category,wood,doorType,height,width,price,query,sort]);
+    return getProductFamilies(matching).sort((a,b) => a.price-b.price);
+  }, [category,wood,doorType,height,width,price]);
 
   return <div className="shop">
     <header className="shop-heading" data-page-enter><div><p className="eyebrow">The NordWood collection</p><h1>Made for <em>your home.</em></h1><p>Explore natural timber, choose your standard size, and find the right fit.</p></div><div className="shop-heading-note"><span>Plantation · Forest · Imported teak</span><strong>Single & double doors</strong><ul><li>GST extra</li></ul></div></header>
@@ -60,7 +58,6 @@ export default function Shop({ onAddToCart }) {
         </div>
       </aside>
       <section className="shop-results" aria-label="Products">
-        <div className="shop-toolbar" data-page-enter><label className="shop-search"><span aria-hidden="true">⌕</span><input type="search" value={query} onChange={event=>updateFilter('q',event.target.value)} placeholder="Search woodwork" aria-label="Search products" /></label><label className="shop-sort">Sort by <select value={sort} onChange={event=>updateFilter('sort',event.target.value)}><option value="name">Name</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label></div>
         <div className="shop-results-heading"><p role="status">{families.length} design{families.length!==1?'s':''}{category ? ` · ${getCategoryLabel(category)}` : ''}</p><span>Choose a design, then your size</span></div>
         {families.length ? <div className="products-grid">{families.map((product, index) => <ProductCard index={index} key={product.key} product={product} onAddToCart={onAddToCart} />)}</div> : <div className="no-products"><h2>No matching woodwork.</h2><p>Try a different wood, size, or price range.</p><button type="button" onClick={clearFilters}>Clear filters</button></div>}
       </section>

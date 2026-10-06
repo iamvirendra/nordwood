@@ -1,23 +1,35 @@
-.door-construction-note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); max-width: 1400px; margin: 4rem auto 0; padding: clamp(1.4rem, 3vw, 3rem); border: 1px solid var(--line); background: var(--paper-light); }
-.door-construction-copy h2 { max-width: 420px; margin: 1rem 0 1.3rem; font-family: var(--serif); font-size: clamp(2rem, 3vw, 3rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.12; }
-.door-construction-copy > p:not(.eyebrow) { max-width: 470px; color: var(--muted); font-size: .875rem; line-height: 1.8; }
-.door-construction-copy > .door-construction-disclaimer { margin-top: 1rem; font-size: .75rem; }
-.door-construction-links { display: flex; align-items: flex-start; flex-direction: column; gap: .45rem; margin-top: 1.4rem; }
-.door-construction-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 44px; border-bottom: 1px solid var(--line-strong); font-size: .8125rem; }
-.door-construction-links a > span { transition: transform .35s var(--ease-out); }
-.door-construction-links a:hover > span { transform: translate(2px, -2px); }
-.door-construction-references { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; min-width: 0; }
+.door-construction-note { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 28px; max-width: 1400px; margin: 40px auto 0; padding: 24px 19px; border: 1px solid var(--glass-border, #fffdf3); border-radius: 24px; background: radial-gradient(ellipse at 5% 0%, rgb(255 255 248 / 85%), transparent 62%), var(--glass-surface, linear-gradient(135deg, #fffdf2, #e9e0cd)); box-shadow: var(--glass-shadow, inset 0 1px 0 white); color: var(--glass-ink, #363e32); }
+.door-construction-copy { min-width: 0; }
+.door-construction-copy h2 { max-width: 440px; margin: 15px 0 20px; font-family: var(--serif); font-size: clamp(2rem, 3.4vw, 3.2rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.12; }
+.door-construction-copy > p:not(.eyebrow) { max-width: 470px; color: var(--glass-muted, #555e4d); font-size: 1rem; line-height: 1.7; }
+.door-construction-copy > .door-construction-disclaimer { margin-top: 16px; font-size: .8125rem; }
+.door-construction-links { display: flex; align-items: stretch; flex-direction: column; gap: 10px; margin-top: 22px; }
+.door-construction-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 48px; padding: 12px 14px; border: 1px solid rgb(255 255 255 / 90%); border-radius: 11px; background: linear-gradient(135deg, rgb(255 255 249 / 70%), rgb(231 220 191 / 54%)); box-shadow: inset 0 1px 0 white, 0 3px 8px rgb(74 67 43 / 5%); font-size: .875rem; line-height: 1.5; }
+.door-construction-links a > span { flex-shrink: 0; }
+.door-construction-references { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; min-width: 0; }
 .door-construction-references figure { min-width: 0; margin: 0; }
-.door-construction-references > a { display: block; min-width: 0; }
-.door-construction-image { aspect-ratio: 3 / 4; overflow: hidden; background: #181812; transition: box-shadow .4s var(--ease-out); }
+.door-construction-references > a { display: block; min-width: 0; padding: 6px 6px 10px; border: 1px solid rgb(255 255 255 / 85%); border-radius: 15px; background: rgb(255 255 250 / 32%); box-shadow: inset 0 1px 0 white; }
+.door-construction-image { aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid rgb(255 255 255 / 48%); border-radius: 10px; background: #181812; }
 .door-construction-image img { width: 100%; height: 100%; object-fit: contain; }
-.door-construction-references > a:hover .door-construction-image { box-shadow: 0 8px 20px rgb(26 20 12 / .15); }
-.door-construction-references figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding-top: .9rem; font-size: .75rem; line-height: 1.6; }
-.door-construction-references figcaption > span:first-child { display: flex; flex-wrap: wrap; gap: .5rem; }
-.door-construction-number { color: var(--muted); font-size: .625rem; }
-.door-construction-image-hint { grid-column: 1 / -1; color: var(--muted); font-size: .6875rem; line-height: 1.6; }
-.door-construction-note a:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 5px; }
-@media (max-width: 800px) { .door-construction-note { grid-template-columns: 1fr; gap: 2rem; } .door-construction-copy h2 { max-width: none; } .door-construction-copy > p:not(.eyebrow) { max-width: 570px; } .door-construction-references { max-width: 580px; } }
-@media (max-width: 440px) { .door-construction-note { margin-top: 3rem; padding: 1.2rem; } .door-construction-references { gap: .75rem; } .door-construction-references figcaption { font-size: .6875rem; } .door-construction-number { display: none; } }
-html[data-motion-mode='reduced'] .door-construction-links a:hover > span { transform: none; }
-@media (prefers-reduced-motion: reduce) { .door-construction-links a > span, .door-construction-image { transition: none; } .door-construction-links a:hover > span { transform: none; } }
+.door-construction-references figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; padding: 10px 2px 0; font-size: .75rem; line-height: 1.5; }
+.door-construction-references figcaption > span:first-child { display: flex; flex-wrap: wrap; gap: 6px; }
+.door-construction-number { display: none; color: var(--glass-muted, #555e4d); font-size: .6875rem; }
+.door-construction-image-hint { grid-column: 1 / -1; margin-top: 3px; color: var(--glass-muted, #555e4d); font-size: .75rem; line-height: 1.6; }
+.door-construction-note a:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 4px; }
+@media (min-width: 540px) {
+  .door-construction-note { padding: 30px; }
+  .door-construction-links { align-items: flex-start; }
+  .door-construction-links a { min-width: 270px; }
+  .door-construction-references { gap: 16px; }
+  .door-construction-number { display: inline; }
+  .door-construction-references figcaption { font-size: .8125rem; }
+}
+@media (min-width: 1000px) {
+  .door-construction-note { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 4vw, 64px); margin-top: 64px; padding: clamp(30px, 3.5vw, 52px); }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  html[data-motion-mode='full'] .door-construction-links a > span { transition: transform .35s var(--ease-out); }
+  html[data-motion-mode='full'] .door-construction-links a:hover > span { transform: translate(2px, -2px); }
+  html[data-motion-mode='full'] .door-construction-references > a { transition: translate .35s var(--ease-out), box-shadow .35s; }
+  html[data-motion-mode='full'] .door-construction-references > a:hover { translate: 0 -3px; box-shadow: 0 10px 20px -12px rgb(65 58 33 / 24%), inset 0 1px 0 white; }
+}

@@ -69,3 +69,22 @@
 @media (prefers-reduced-motion: reduce) {
   .project-note *, .project-note *::before, .project-note *::after { animation: none !important; transition: none !important; }
 }
+
+.project-note__drawing { border: 1px solid #b9c1a857; border-radius: 21px; background: radial-gradient(ellipse at 70% 0, #7e907254, transparent 62%), var(--glass-smoke), #263b30; box-shadow: inset 0 1px 0 #ffffff30, 0 15px 30px -22px #20331b88; }
+.project-note__drawing::after { inset: 5px; border-color: #f5f3dd1f; border-radius: 17px; }
+.project-note__drawing-top { color: #e5e2cf; font-size: .625rem; }
+.project-note__paper { border-color: var(--glass-border); border-radius: 17px; background: var(--glass-surface); box-shadow: var(--glass-shadow); }
+.project-note__paper::before { border: 1px solid #f6ead0b3; border-radius: 5px; background: linear-gradient(135deg, #f9e9c6db, #ddc99fc2); box-shadow: inset 0 1px 0 #ffffff70; }
+.project-note__eyebrow { font-size: .6875rem; letter-spacing: .09em; }
+.project-note__live-label, .project-note__message, .project-note__message.has-value, .project-note__details dd, .project-note__signature p { color: var(--glass-muted); }
+.project-note__details dt, .project-note__signature-label { color: var(--glass-muted); font-size: .625rem; }
+.project-note__contact, .project-note__footnote { color: var(--glass-muted); font-size: .75rem; }
+.project-note[data-note-motion='full'] .project-note__woodwork,
+.project-note[data-note-motion='full'] .project-note__title,
+.project-note[data-note-motion='full'] .project-note__stage-caption { animation-fill-mode: backwards; }
+@media (max-width: 700px) {
+  .project-note__paper { padding: 1.3rem 1.1rem; }
+  .project-note__message { font-size: 1rem; }
+  .project-note__details dd { font-size: 1rem; }
+  .project-note__footnote { font-size: .75rem; }
+}

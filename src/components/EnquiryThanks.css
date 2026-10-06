@@ -205,3 +205,24 @@ dialog.enquiry-thanks {
 @media (prefers-reduced-motion: reduce) {
   .enquiry-thanks, .enquiry-thanks::backdrop, .enquiry-thanks *, .enquiry-thanks *::before, .enquiry-thanks *::after { animation: none !important; transition: none !important; }
 }
+
+.enquiry-sent-confirmation { border-color: var(--glass-border); border-radius: 15px; background: var(--glass-surface); box-shadow: var(--glass-shadow); }
+.enquiry-sent-confirmation > p { font-size: .8125rem; }
+.enquiry-sent-confirmation__button { min-height: 50px; border-color: #798567; border-radius: 10px; background: linear-gradient(135deg, #f9f9ec, #e4e8d5); box-shadow: inset 0 1px 0 white; font-size: .8125rem; }
+dialog.enquiry-thanks { border-color: var(--glass-border); border-radius: 25px; background: var(--glass-surface); box-shadow: 0 25px 80px #13201955, inset 0 1px 1px #fff, inset 0 -1px 1px #9c895f40; }
+.enquiry-thanks__content { background: radial-gradient(ellipse at 15% 0, #ffffffb3, transparent 65%), linear-gradient(120deg, transparent 63%, #ffffff52 64%, transparent 82%); }
+.enquiry-thanks__content::before { top: 5px; inset-inline: 5px; height: auto; bottom: 5px; border: 1px solid #ffffff73; border-radius: 20px; background: none; }
+.enquiry-thanks__close { border-color: #ffffffad; background: linear-gradient(135deg, #fffcf3, #e6ddc7); box-shadow: inset 0 1px 0 white; color: #59604e; }
+.enquiry-thanks__done { min-height: 54px; border-radius: 12px; background: var(--glass-action); box-shadow: inset 0 1px 0 #ffffff4d, 0 7px 14px -9px #26332066; font-size: .875rem; }
+.enquiry-thanks__note { color: var(--glass-muted); }
+.enquiry-thanks[data-thanks-motion='full'][open],
+.enquiry-thanks[data-thanks-motion='full'][open]::backdrop,
+.enquiry-thanks[data-thanks-motion='full'][open] .enquiry-thanks__seal,
+.enquiry-thanks[data-thanks-motion='full'][open] .enquiry-thanks__check,
+.enquiry-thanks[data-thanks-motion='full'][open] .enquiry-thanks__check :is(path, polyline) { animation-fill-mode: backwards; }
+@media (max-width: 480px) {
+  dialog.enquiry-thanks { width: calc(100vw - 1.5rem); border-radius: 22px; }
+  .enquiry-thanks__content { padding-inline: 1.3rem; }
+  .enquiry-thanks__message, .enquiry-thanks__note { font-size: .9375rem; }
+  .enquiry-thanks::backdrop { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+}

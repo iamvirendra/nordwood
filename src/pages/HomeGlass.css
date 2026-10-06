@@ -1,0 +1,205 @@
+/* The same champagne glass used for accounts, contained to the showroom. */
+.home {
+  --home-glass-light: linear-gradient(135deg, rgb(255 255 249 / 88%), rgb(246 242 227 / 73%) 52%, rgb(232 222 198 / 72%));
+  --home-glass-border: rgb(255 255 250 / 90%);
+  --home-glass-shadow: 0 15px 34px -23px rgb(63 58 35 / 38%), 0 2px 6px rgb(77 68 42 / 5%), inset 0 1px 1px white, inset 0 -1px 1px rgb(164 149 114 / 16%);
+  --home-glass-ink: #363e32;
+  --home-glass-muted: #555e4d;
+  background: #f4f0e6;
+}
+
+.home .home-material-strip {
+  position: relative;
+  width: calc(100% - 2 * var(--home-gutter));
+  max-width: 1420px;
+  min-height: 62px;
+  margin: 24px auto 0;
+  padding: 17px 24px;
+  border: 1px solid var(--home-glass-border);
+  border-radius: 18px;
+  background: var(--home-glass-light);
+  box-shadow: var(--home-glass-shadow);
+  color: var(--home-glass-ink);
+  font-size: .6rem;
+}
+.home .home-material-strip i { color: #8b7047; }
+.home :is(.categories, .home-woods, .featured-products) { position: relative; isolation: isolate; border: 0; }
+.home .categories { padding-block: clamp(30px, 4.2vw, 64px); background: radial-gradient(ellipse at 85% 55%, rgb(231 215 180 / 58%), transparent 65%), #f4f0e6; }
+.home .categories .section-heading-row { margin-bottom: 25px; }
+.home .home-woods { padding-block: clamp(32px, 4.6vw, 64px); background: radial-gradient(ellipse at 4% 45%, rgb(250 246 232 / 85%), transparent 65%), linear-gradient(115deg, #dedbcf, #ebe2ce); }
+.home .home-woods .section-heading-row { margin-bottom: 26px; }
+.home .featured-products { padding-block: clamp(56px, 6vw, 88px); background: radial-gradient(ellipse at 88% 35%, rgb(229 213 177 / 46%), transparent 62%), #f6f2e8; }
+.home .section-heading-note, .home .wood-guide-photo-note { color: var(--home-glass-muted); }
+
+.home :is(.collection-card, .wood-guide-card, .product-card, .cta-aside) {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--home-glass-border);
+  border-radius: 22px;
+  background: var(--home-glass-light);
+  box-shadow: var(--home-glass-shadow);
+  color: var(--home-glass-ink);
+}
+.home :is(.collection-card, .wood-guide-card, .product-card, .cta-aside)::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at var(--home-reflection-x, 15%) var(--home-reflection-y, 0%), rgb(255 255 255 / 65%), transparent 62%), linear-gradient(120deg, transparent 58%, rgb(255 255 255 / 27%) 59%, transparent 73%);
+  content: '';
+  pointer-events: none;
+}
+.home :is(.collection-card, .wood-guide-card, .product-card, .cta-aside)::after {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-bottom-color: rgb(157 139 100 / 10%);
+  border-radius: 18px;
+  content: '';
+  pointer-events: none;
+}
+.home .collection-card { padding: 12px; gap: 20px; }
+.home .collection-card-image { border: 1px solid rgb(255 255 255 / 58%); border-radius: 14px; background: linear-gradient(145deg, #eee9dc, #e2d9c4); box-shadow: inset 0 1px 5px rgb(77 68 42 / 6%); }
+.home :is(.category-number, .wood-guide-image > span, .product-image-label) { border: 1px solid rgb(255 255 255 / 75%); border-radius: 9px; background: linear-gradient(125deg, rgb(255 254 244 / 88%), rgb(241 233 212 / 76%)); box-shadow: 0 3px 12px rgb(41 41 26 / 8%), inset 0 1px 0 rgb(255 255 255 / 70%); color: #675333; backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); }
+.home .category-copy p, .home .category-copy > span { color: var(--home-glass-muted); }
+.home .category-arrow { border: 1px solid rgb(255 255 250 / 95%); background: linear-gradient(145deg, #fffdf5, #e8dfc9); box-shadow: 0 4px 9px -4px rgb(71 64 38 / 25%), inset 0 1px 0 white; color: #6b5735; }
+.home .wood-guide-card { padding: 8px; }
+.home .wood-guide-image { height: clamp(115px, 15svh, 155px); border: 1px solid rgb(255 255 255 / 45%); border-radius: 15px; }
+.home .wood-guide-copy { padding: 15px 13px 12px; }
+.home .wood-guide-copy p { color: var(--home-glass-muted); }
+.home .wood-guide-link { color: #745d37; padding-top: 15px; }
+.home .wood-guide-image > span { left: 9px; top: 9px; }
+.home .product-card { padding: 10px; overflow: hidden; }
+.home .product-card:hover { box-shadow: var(--home-glass-shadow); }
+.home .product-image-container { border: 1px solid rgb(255 255 255 / 50%); border-radius: 14px; background: linear-gradient(145deg, #eee9dc, #e2d9c4); }
+.home .product-info { padding: 18px 10px 12px; }
+.home .product-description, .home .product-specs, .home .product-tax-note, .home .category-badge, .home .wood-badge { color: var(--home-glass-muted); }
+.home .product-footer { border-top-color: rgb(74 76 49 / 15%); }
+.home .product-price { color: var(--home-glass-ink); }
+.home .product-image-label { top: 9px; left: 9px; max-width: calc(100% - 18px); font-size: .6rem; }
+
+/* Glossy action surfaces; the moving sheen appears only on intentional hover. */
+.home :is(.add-to-cart-btn, .cta-btn, .section-link, .timber-craft__footer a) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgb(62 72 49 / 68%);
+  border-radius: 10px;
+  background: linear-gradient(125deg, #59634c, #353e31 66%, #444c38);
+  box-shadow: inset 0 1px 0 rgb(255 255 235 / 27%), 0 5px 13px -7px rgb(30 43 24 / 40%);
+  color: #fffbed;
+  transition: box-shadow .3s, filter .3s;
+}
+.home :is(.add-to-cart-btn, .cta-btn, .section-link, .timber-craft__footer a)::after {
+  position: absolute;
+  inset: -40% auto -40% -70%;
+  width: 40%;
+  transform: skewX(-24deg);
+  background: linear-gradient(90deg, transparent, rgb(255 253 214 / 22%), transparent);
+  content: '';
+  pointer-events: none;
+}
+.home :is(.add-to-cart-btn, .cta-btn, .section-link, .timber-craft__footer a):hover { background: linear-gradient(125deg, #657154, #3a4633 66%, #4a563d); border-color: #606d4f; box-shadow: inset 0 1px 0 rgb(255 255 235 / 32%), 0 8px 16px -8px rgb(30 43 24 / 42%); color: #fffbed; }
+.home .section-link { min-height: 49px; padding: 13px 23px; gap: 32px; margin-top: 30px; }
+.home .section-link:hover { gap: 32px; }
+.home .add-to-cart-btn { padding: 12px 10px; }
+.home .timber-craft__footer a { padding: 9px 17px; }
+
+/* The interactive study stays clear, set within a softly beveled display. */
+.home .timber-craft { background: radial-gradient(ellipse at 80% 10%, rgb(231 215 183 / 50%), transparent 65%), #f5f1e7; }
+.home .door-assembly__stage { border-color: rgb(255 255 255 / 95%); border-radius: 22px; background: radial-gradient(ellipse at 45% 35%, rgb(255 255 250 / 98%), rgb(248 245 230 / 81%) 60%, rgb(228 216 188 / 77%)); box-shadow: var(--home-glass-shadow); }
+.home .door-assembly__stage-heading { border-bottom-color: rgb(89 81 49 / 9%); background: linear-gradient(110deg, rgb(255 255 255 / 43%), rgb(255 255 255 / 5%)); }
+.home .door-assembly__buttons { border-color: rgb(255 255 249 / 88%); border-radius: 13px; background: linear-gradient(135deg, rgb(255 255 249 / 76%), rgb(237 230 211 / 75%)); box-shadow: inset 0 1px 0 white, 0 3px 10px rgb(60 57 38 / 6%); }
+.home .door-assembly__buttons button { border-radius: 9px; color: var(--home-glass-muted); }
+.home .door-assembly__buttons button[aria-pressed='true'] { background: linear-gradient(135deg, #627151, #37462f); color: #fffcef; box-shadow: inset 0 1px 0 rgb(255 255 228 / 24%), 0 3px 6px rgb(31 44 23 / 17%); }
+.home .door-assembly__slider input::-webkit-slider-thumb { background: linear-gradient(135deg, #788866, #3b4b32); border-color: #fffdf2; box-shadow: 0 0 0 1px #71815f, 0 3px 7px rgb(45 60 30 / 20%); }
+.home .door-assembly__slider input::-moz-range-thumb { background: linear-gradient(135deg, #788866, #3b4b32); border-color: #fffdf2; box-shadow: 0 0 0 1px #71815f, 0 3px 7px rgb(45 60 30 / 20%); }
+
+.home .home-cta { margin: clamp(24px, 4vw, 50px) clamp(16px, 3vw, 48px); padding: clamp(34px, 5.6vw, 80px); border: 1px solid rgb(255 255 241 / 50%); border-radius: 28px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: center; gap: clamp(30px, 4vw, 60px); box-shadow: 0 23px 40px -30px rgb(35 40 24 / 60%); }
+.home .home-cta::after { opacity: 1; mix-blend-mode: normal; background-image: linear-gradient(90deg, rgb(28 36 28 / 92%), rgb(36 43 30 / 49%)), url('/images/nordwood-teak-entry-small.jpg'); }
+.home .cta-copy h2 { font-size: clamp(36px, 4vw, 61px); }
+.home .cta-aside { width: 100%; max-width: 440px; padding: clamp(24px, 3vw, 40px); background: linear-gradient(130deg, rgb(255 253 240 / 84%), rgb(237 226 201 / 74%)); box-shadow: 0 19px 40px -20px rgb(8 18 8 / 46%), inset 0 1px 0 #fffef3; backdrop-filter: blur(20px) saturate(1.25); -webkit-backdrop-filter: blur(20px) saturate(1.25); }
+.home .cta-aside p { color: var(--home-glass-ink); font-size: .9rem; }
+.home .cta-btn { gap: 16px; padding: 15px 17px; font-size: .72rem; letter-spacing: 0; }
+.home .cta-location { margin-top: 21px; color: #4f5747; font-size: .67rem; }
+.home .cta-aside :is(a, button):focus-visible { outline-color: #776244; }
+
+@media (hover: hover) and (pointer: fine) {
+  .home :is(.collection-card, .wood-guide-card):hover { border-color: #fffef5; background: var(--home-glass-light); box-shadow: 0 22px 37px -22px rgb(67 59 33 / 33%), inset 0 1px 1px white; }
+  .home .collection-card:hover .category-arrow { border-color: #546144; background: linear-gradient(135deg, #697958, #3d4c33); color: #fffbe9; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion-mode='full'] .home :is(.collection-card, .wood-guide-card, .product-card) { transition: translate .35s var(--ease-out), box-shadow .35s, opacity .9s var(--ease-out) var(--reveal-delay, 0ms), transform 1.1s var(--ease-out) var(--reveal-delay, 0ms); }
+  html[data-motion-mode='full'] .home :is(.add-to-cart-btn, .cta-btn, .section-link, .timber-craft__footer a):hover::after { animation: home-glass-sheen .8s ease-out; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  html[data-motion-mode='full'] .home :is(.wood-guide-card, .product-card):hover { translate: 0 -4px; }
+}
+@keyframes home-glass-sheen { from { left: -70%; } to { left: 140%; } }
+@media (max-width: 1100px) {
+  .home .collection-card { gap: 12px; }
+  .home .home-material-strip { gap: 12px; font-size: .55rem; }
+  .home .home-products-grid { gap: 22px; }
+}
+@media (max-width: 760px) {
+  .home .home-material-strip { width: calc(100% - 32px); margin-top: 17px; border-radius: 14px; padding: 15px 18px; }
+  .home .collection-card { padding: 9px; gap: 11px 7px; border-radius: 17px; }
+  .home .collection-card::after { border-radius: 13px; }
+  .home .collection-card-image { border-radius: 10px; }
+  .home .wood-guide-card { border-radius: 17px; padding: 6px; }
+  .home .wood-guide-card::after { border-radius: 13px; }
+  .home .wood-guide-image { height: 110px; border-radius: 12px; }
+  .home .wood-guide-copy { padding: 11px 7px 9px; }
+  .home .wood-guide-copy h3 { font-size: 1.3rem; }
+  .home .wood-guide-copy p { font-size: .73rem; }
+  .home .product-info { padding: 15px 7px 10px; }
+  .home .home-cta { grid-template-columns: 1fr; margin: 24px 16px; padding: 31px 24px; border-radius: 24px; }
+  .home .cta-copy h2 { font-size: clamp(31px, 7vw, 45px); }
+  .home .cta-aside { max-width: none; padding: 26px; border-radius: 19px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .home .cta-aside::after { border-radius: 15px; }
+  .home .door-assembly__stage { border-radius: 17px; }
+}
+@media (max-width: 380px) {
+  .home .home-cta { padding: 28px 17px; margin-inline: 12px; }
+  .home .cta-aside { padding: 23px 18px; }
+  .home .collection-card { gap: 9px 3px; padding: 7px; }
+  .home .wood-guides-grid { gap: 10px; }
+  .home .wood-guide-copy h3 { font-size: 1.16rem; }
+  .home .wood-guide-copy p { font-size: .69rem; }
+}
+/* Mobile reading uses full-width material cards instead of miniature text. */
+@media (max-width: 560px) {
+  .home .wood-guides-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .home .wood-guide-card { padding: 8px; }
+  .home .wood-guide-image { height: 150px; }
+  .home .wood-guide-copy { padding: 16px 12px 12px; }
+  .home .wood-guide-copy h3 { font-size: 1.65rem; }
+  .home .wood-guide-copy p { font-size: .9375rem; line-height: 1.7; }
+  .home .wood-guide-link { min-height: 44px; padding-top: 14px; font-size: .8125rem; }
+  .home .wood-guide-photo-note { font-size: .75rem; }
+  .home .product-description { font-size: .9375rem; }
+  .home .product-specs { font-size: .8125rem; }
+  .home .add-to-cart-btn { min-height: 48px; font-size: .8125rem; }
+  .home .product-footer { flex-wrap: wrap; }
+  .home .cta-aside p { font-size: .9375rem; }
+  .home .cta-btn { min-height: 52px; font-size: .8125rem; }
+  .home .cta-location { font-size: .75rem; }
+  .home .timber-craft__intro p { font-size: .9375rem; }
+  .home .door-assembly__stage-heading { font-size: .625rem; }
+  .home .door-assembly__stage-caption { font-size: .6875rem; }
+  .home .door-assembly__buttons button { min-height: 48px; padding-inline: 10px; font-size: .8125rem; }
+  .home .door-assembly__slider label { font-size: .875rem; }
+  .home .door-assembly__note { font-size: .75rem; }
+  .home .timber-craft__footer p { font-size: .75rem; }
+  .home .timber-craft__footer a { min-height: 48px; font-size: .875rem; }
+  .home .heritage__copy > p { font-size: .875rem; }
+  .home .heritage__milestone dt { font-size: .75rem; }
+  .home .testimonials__story { padding: 20px 18px; }
+  .home .testimonials blockquote p { font-size: 1.25rem; line-height: 1.5; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .home .cta-aside { background: linear-gradient(135deg, #f7f3e4, #e8ddc2); }
+  .home :is(.category-number, .wood-guide-image > span, .product-image-label) { background: #f6f0e1; }
+}
+html[data-motion-mode='reduced'] .home *, html[data-motion-mode='reduced'] .home *::before, html[data-motion-mode='reduced'] .home *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .home *, .home *::before, .home *::after { animation: none !important; transition: none !important; } }

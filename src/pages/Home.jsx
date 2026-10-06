@@ -10,7 +10,9 @@ import TimberCraft from '../components/TimberCraft';
 import Testimonials from '../components/Testimonials';
 import Heritage from '../components/Heritage';
 import HeroCarousel from '../components/HeroCarousel';
+import { useMotion } from '../motion/MotionContext';
 import './Home.css';
+import './HomeGlass.css';
 
 const categoryItems = [
   { value: 'Door', number: '01', label: 'Doors', eyebrow: 'A beautiful first impression', description: 'Solid timber. Distinctive character. A welcome that feels like you.' },
@@ -27,8 +29,40 @@ function Arrow({ diagonal = false, className = '' }) {
 }
 
 export default function Home({ onAddToCart }) {
+  const { enabled: motionEnabled } = useMotion();
   const location = useLocation();
   const scrolledHashRef = useRef(null);
+  const reflectionRef = useRef({ element: null, frame: null });
+
+  useEffect(() => {
+    const reflection = reflectionRef.current;
+    return () => window.cancelAnimationFrame(reflection.frame);
+  }, []);
+
+  const clearReflection = () => {
+    const reflection = reflectionRef.current;
+    window.cancelAnimationFrame(reflection.frame);
+    reflection.element?.style.removeProperty('--home-reflection-x');
+    reflection.element?.style.removeProperty('--home-reflection-y');
+    reflection.element = null;
+  };
+
+  const moveReflection = event => {
+    if (!motionEnabled || event.pointerType !== 'mouse') return;
+    const element = event.target.closest?.('[data-home-glass]');
+    if (element !== reflectionRef.current.element) clearReflection();
+    if (!element) return;
+    const bounds = element.getBoundingClientRect();
+    const x = `${((event.clientX - bounds.left) / bounds.width) * 100}%`;
+    const y = `${((event.clientY - bounds.top) / bounds.height) * 100}%`;
+    const reflection = reflectionRef.current;
+    reflection.element = element;
+    window.cancelAnimationFrame(reflection.frame);
+    reflection.frame = window.requestAnimationFrame(() => {
+      element.style.setProperty('--home-reflection-x', x);
+      element.style.setProperty('--home-reflection-y', y);
+    });
+  };
 
   useEffect(() => {
     if (!['#approach', '#collections', '#wood-types', '#heritage', '#testimonials'].includes(location.hash)) return;
@@ -42,7 +76,7 @@ export default function Home({ onAddToCart }) {
   }, [location.hash, location.key]);
 
   return (
-    <div className="home">
+    <div className="home" onPointerMove={moveReflection} onPointerLeave={clearReflection}>
       <HeroCarousel />
       <div className="home-material-strip" aria-label="Our approach to woodwork"><span>Beautiful by nature</span><i aria-hidden="true">✳</i><span>Solid timber</span><i aria-hidden="true">✳</i><span>Made to your measure</span><i aria-hidden="true">✳</i><span>Crafted in Lucknow</span><i aria-hidden="true">✳</i><span>Considered in every detail</span></div>
       <section className="categories" id="collections" aria-labelledby="collections-title">
@@ -50,7 +84,7 @@ export default function Home({ onAddToCart }) {
         <div className="collections-grid">
           {categoryItems.map(category => {
             const image = getProductImages(category.label, category.value)[0];
-            return <Link key={category.value} to={`/shop?category=${category.value}`} className="collection-card" data-reveal>
+            return <Link key={category.value} to={`/shop?category=${category.value}`} className="collection-card" data-reveal data-home-glass>
               <div className="collection-card-image"><img src={image.src} alt={image.alt} width={image.width || 600} height={image.height || 900} loading="lazy" /><span className="category-number">{category.number}</span></div>
               <div className="category-copy"><p>{category.eyebrow}</p><h3>{category.label}</h3><span>{category.description}</span></div>
               <span className="category-arrow"><Arrow diagonal /></span>
@@ -66,7 +100,7 @@ export default function Home({ onAddToCart }) {
         <div className="wood-guides-grid">
           {woodGuides.map((guide, index) => {
             const cover = blogImages[guide.imageKeys[0]];
-            return <Link key={guide.id} to={`/blog/${guide.id}`} className="wood-guide-card" aria-labelledby={`${guide.id}-label`} data-reveal>
+            return <Link key={guide.id} to={`/blog/${guide.id}`} className="wood-guide-card" aria-labelledby={`${guide.id}-label`} data-reveal data-home-glass>
               <div className="wood-guide-image"><img src={cover.src} alt={cover.alt} width={cover.width || 1200} height={cover.height || 800} loading="lazy" decoding="async" /><span>{String(index + 1).padStart(2, '0')}</span></div>
               <div className="wood-guide-copy"><h3 id={`${guide.id}-label`}>{guide.woodType}</h3><p>{guide.summary}</p><span className="wood-guide-link">Explore the wood <Arrow diagonal /></span></div>
             </Link>;
@@ -78,13 +112,13 @@ export default function Home({ onAddToCart }) {
       <TimberCraft />
       <section className="featured-products" aria-labelledby="selected-title">
         <div className="section-heading-row" data-reveal><div><p className="eyebrow">04 / A considered selection</p><h2 id="selected-title">Natural character.<br /><em>Lasting presence.</em></h2></div><p className="section-heading-note">Discover the materials and proportions that make an opening your own.</p></div>
-        <div className="home-products-grid">{featuredProducts.map((product, index) => <div key={product.id} data-reveal style={{ '--reveal-delay': `${index * 65}ms` }}><ProductCard index={index} product={product} onAddToCart={onAddToCart} /></div>)}</div>
+        <div className="home-products-grid">{featuredProducts.map((product, index) => <div key={product.id} data-reveal data-home-glass style={{ '--reveal-delay': `${index * 65}ms` }}><ProductCard index={index} product={product} onAddToCart={onAddToCart} /></div>)}</div>
         <Link to="/shop" className="section-link">Explore every piece <Arrow diagonal /></Link>
       </section>
       <Testimonials />
       <section className="home-cta" aria-labelledby="project-title">
         <div className="cta-copy" data-reveal><p className="eyebrow">06 / Your space. Our craft.</p><h2 id="project-title">Every beautiful home<br />begins with <em>an opening.</em></h2></div>
-        <div className="cta-aside" data-reveal><p>A new home, a thoughtful renovation, or a detail you’ve been imagining. Let’s find the right woodwork for it.</p><Link to="/contact" className="cta-btn">Let’s talk about your project <Arrow diagonal /></Link><span className="cta-location">Made with care in Lucknow, India.</span></div>
+        <div className="cta-aside" data-reveal data-home-glass><p>A new home, a thoughtful renovation, or a detail you’ve been imagining. Let’s find the right woodwork for it.</p><Link to="/contact" className="cta-btn">Let’s talk about your project <Arrow diagonal /></Link><span className="cta-location">Made with care in Lucknow, India.</span></div>
       </section>
     </div>
   );

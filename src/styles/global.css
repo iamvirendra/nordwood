@@ -27,6 +27,15 @@
   --serif: Georgia, 'Times New Roman', serif;
   --sans: 'Helvetica Neue', 'Avenir Next', Avenir, Arial, sans-serif;
   --max-width: 1380px;
+  /* Shared champagne glass surfaces, with static light for mobile performance. */
+  --glass-surface: linear-gradient(135deg, rgb(255 255 249 / 92%), rgb(246 242 227 / 83%) 52%, rgb(232 222 198 / 80%));
+  --glass-border: rgb(255 255 250 / 90%);
+  --glass-shadow: 0 15px 34px -23px rgb(63 58 35 / 38%), 0 2px 6px rgb(77 68 42 / 5%), inset 0 1px 1px white, inset 0 -1px 1px rgb(164 149 114 / 16%);
+  --glass-ink: #343d31;
+  --glass-muted: #535c4b;
+  --glass-action: linear-gradient(125deg, #59664b, #354230 68%, #47523c);
+  --glass-radius: 22px;
+  --glass-smoke: linear-gradient(135deg, rgb(255 252 227 / 11%), rgb(235 227 199 / 4%) 58%, rgb(232 219 178 / 9%));
 }
 
 html {
@@ -122,3 +131,11 @@ select:focus-visible {
 }
 
 :is(.home-hero, .home-cta) :is(a, button):focus-visible { outline-color: var(--brass); }
+
+/* Keep the on-screen keyboard from covering focused form fields. */
+.main-content :is(input, select, textarea) { scroll-margin-block: 105px 100px; }
+@media (max-width: 760px) {
+  .main-content input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  .main-content select,
+  .main-content textarea { font-size: 16px; }
+}

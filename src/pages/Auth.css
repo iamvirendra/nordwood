@@ -205,6 +205,32 @@
   .auth-panel, .auth-page--signup .auth-panel { padding-inline: 17px; }
   .auth-options { font-size: .63rem; }
 }
+/* On phones the form comes first, with comfortable controls above the keyboard. */
+@media (max-width: 760px) {
+  .auth-layout { min-height: 0; padding: 18px; }
+  .auth-story { display: none; }
+  .auth-panel, .auth-page--signup .auth-panel { max-width: 520px; padding: 26px 22px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .auth-topline > a, .auth-bottomline > a, .auth-tabs a, .auth-switch a, .auth-checkbox, .auth-options > a { min-height: 44px; }
+  .auth-tabs a { display: inline-flex; align-items: center; justify-content: center; font-size: .875rem; }
+  .auth-heading > p:last-child { font-size: .9375rem; line-height: 1.75; }
+  .auth-eyebrow { font-size: .65rem; line-height: 1.6; letter-spacing: .07em; }
+  .auth-field > label { font-size: .875rem; }
+  .auth-input-wrap input { height: 54px; font-size: 16px; }
+  .auth-input-wrap input::placeholder { font-size: .875rem; }
+  .auth-password-toggle { width: 44px; height: 44px; }
+  .auth-options { flex-wrap: wrap; gap: 0 12px; font-size: .8125rem; }
+  .auth-options > a { align-items: center; }
+  .auth-password-guidance p, .auth-password-guidance > span, .auth-field-error { font-size: .75rem; }
+  .auth-submit { min-height: 54px; font-size: .9375rem; }
+  .auth-switch { align-items: center; margin-top: 16px; font-size: .875rem; }
+  .auth-reassurance { font-size: .75rem; line-height: 1.6; text-align: center; }
+  .auth-form-note, .auth-error { font-size: .8125rem; }
+  .auth-light { display: none; }
+}
+@media (max-width: 360px) {
+  .auth-layout { padding: 12px; }
+  .auth-panel, .auth-page--signup .auth-panel { padding: 24px 17px; }
+}
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .auth-panel { background: linear-gradient(135deg, #f7f5e9, #e8e1cd); } }
 html[data-motion-mode='reduced'] .auth-page *, html[data-motion-mode='reduced'] .auth-page *::before, html[data-motion-mode='reduced'] .auth-page *::after { animation: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) { .auth-page *, .auth-page *::before, .auth-page *::after { animation: none !important; transition: none !important; } }

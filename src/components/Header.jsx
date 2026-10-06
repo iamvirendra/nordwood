@@ -1,19 +1,69 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import DeliveryCartLink from './DeliveryCartLink';
 import BrandWordmark from './BrandWordmark';
 import { brandLogo } from '../data/brand';
 import { useAuth } from '../auth/context';
+import { useMotion } from '../motion/MotionContext';
 import './Header.css';
 
 export default function Header({ cartCount = 0 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const reflectionFrame = useRef(null);
+  const { enabled: motionEnabled } = useMotion();
   const { pathname } = useLocation();
   const isHomepage = pathname === '/' || pathname === '/about';
   const { user } = useAuth();
 
+  useEffect(() => {
+    const header = headerRef.current;
+    return () => {
+      window.cancelAnimationFrame(reflectionFrame.current);
+      header?.style.removeProperty('--header-glow-x');
+    };
+  }, [motionEnabled]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOutside = event => {
+      if (!headerRef.current?.contains(event.target)) setMenuOpen(false);
+    };
+    const closeOnEscape = event => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const closeOnDesktop = event => { if (event.matches) setMenuOpen(false); };
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeOnEscape);
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeOnEscape);
+      desktop.removeEventListener('change', closeOnDesktop);
+    };
+  }, [menuOpen]);
+
+  const moveReflection = event => {
+    if (!motionEnabled || event.pointerType !== 'mouse') return;
+    const header = event.currentTarget;
+    const bounds = header.getBoundingClientRect();
+    const position = `${((event.clientX - bounds.left) / bounds.width) * 100}%`;
+    window.cancelAnimationFrame(reflectionFrame.current);
+    reflectionFrame.current = window.requestAnimationFrame(() => header.style.setProperty('--header-glow-x', position));
+  };
+  const clearReflection = () => {
+    window.cancelAnimationFrame(reflectionFrame.current);
+    headerRef.current?.style.removeProperty('--header-glow-x');
+  };
+
   return (
-    <header className="header header--home">
+    <header ref={headerRef} className="header header--home" onPointerMove={moveReflection} onPointerLeave={clearReflection} onClick={event => { if (event.target.closest('a')) setMenuOpen(false); }}>
+      <span className="header-sheen" aria-hidden="true" />
       <div className="header-container">
         <Link to="/" className="logo" aria-label="NordWood home">
           <img src={brandLogo.src} width={brandLogo.width} height={brandLogo.height} alt="" className="logo-image" />
@@ -24,6 +74,7 @@ export default function Header({ cartCount = 0 }) {
         </Link>
 
         <button 
+          ref={menuButtonRef}
           type="button"
           className={`hamburger ${menuOpen ? 'active' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}

@@ -80,3 +80,106 @@
   .heritage__milestone dt { gap: .3rem; font-size: .625rem; }
   .heritage__milestone dt svg { width: 15px; height: 15px; }
 }
+
+/* Smoked glass and champagne reflections carry the account palette into the story. */
+.home .heritage {
+  border-block: 1px solid rgb(241 228 199 / 18%);
+  background:
+    radial-gradient(ellipse at 88% 15%, rgb(164 137 84 / 20%), transparent 46%),
+    radial-gradient(ellipse at 5% 100%, rgb(117 131 94 / 12%), transparent 55%),
+    linear-gradient(115deg, #282e28, #343a30 53%, #252c26);
+}
+.home .heritage::before {
+  background:
+    linear-gradient(113deg, transparent 20%, rgb(246 231 192 / 4%) 45%, transparent 61%),
+    repeating-linear-gradient(94deg, transparent 0 72px, rgb(255 244 219 / 1.5%) 73px, transparent 74px 151px);
+}
+.home .heritage__topline { border-bottom-color: rgb(244 235 211 / 16%); }
+.home .heritage__era {
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgb(255 243 211 / 20%);
+  border-radius: 23px;
+  background: linear-gradient(128deg, rgb(245 234 202 / 11%), rgb(224 215 185 / 3%) 50%, rgb(224 210 172 / 8%));
+  box-shadow: 0 18px 40px -24px rgb(9 17 11 / 65%), inset 0 1px 0 rgb(255 245 218 / 20%), inset 0 -1px 0 rgb(15 22 16 / 18%);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+.home .heritage__era::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 15% 0%, rgb(255 241 194 / 14%), transparent 58%), linear-gradient(118deg, transparent 55%, rgb(255 246 217 / 5%) 56%, transparent 57%);
+  content: '';
+  pointer-events: none;
+}
+.home .heritage__era::after {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgb(255 242 204 / 6%);
+  border-radius: 18px;
+  content: '';
+  pointer-events: none;
+}
+.home .heritage__rings { width: 102%; opacity: .22; }
+.home .heritage__decade { text-shadow: 0 2px 22px rgb(236 220 179 / 9%); }
+.home .heritage__milestones { gap: clamp(.5rem, 1.15vw, 1rem); border: 0; }
+.home .heritage__milestone,
+.home .heritage__milestone:first-child {
+  padding: 1.15rem clamp(.8rem, 1.75vw, 1.65rem);
+  overflow: hidden;
+  border: 1px solid rgb(246 235 206 / 17%);
+  border-radius: 17px;
+  background: linear-gradient(133deg, rgb(245 237 214 / 10%), rgb(248 239 211 / 3%) 59%, rgb(239 226 191 / 7%));
+  box-shadow: 0 10px 22px -15px rgb(5 12 7 / 48%), inset 0 1px 0 rgb(255 246 222 / 15%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.home .heritage__milestone::after {
+  right: 15%;
+  bottom: 0;
+  left: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e8d8b6, transparent);
+}
+.home .heritage__milestone dt { color: #d4d6c7; }
+@media (hover: hover) and (pointer: fine) {
+  .home .heritage__milestone:hover {
+    border-color: rgb(247 233 195 / 35%);
+    background-color: rgb(255 244 212 / 5%);
+    box-shadow: 0 16px 28px -17px rgb(5 12 7 / 62%), inset 0 1px 0 rgb(255 246 222 / 27%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion-mode='full'] .home .heritage--revealed .heritage__era::before { animation: heritage-glass-light 9s ease-in-out infinite; }
+  html[data-motion-mode='full'] .home .heritage--revealed :is(.heritage__since, .heritage__decade, .heritage__era-note) { animation-fill-mode: backwards; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  html[data-motion-mode='full'] .home .heritage__milestone { transition: transform .4s var(--ease-out), border-color .4s, background-color .4s, box-shadow .4s; }
+  html[data-motion-mode='full'] .home .heritage__milestone:hover { transform: translateY(-3px); }
+}
+@keyframes heritage-glass-light { 0%, 100% { opacity: .6; transform: translateX(-3%); } 50% { opacity: 1; transform: translateX(3%); } }
+@media (max-width: 900px) {
+  .home .heritage__story { gap: 1.4rem; }
+  .home .heritage__milestone,
+  .home .heritage__milestone:first-child { padding-inline: .8rem; }
+}
+@media (max-width: 640px) {
+  .home .heritage__story { gap: 1.1rem; }
+  .home .heritage__era { padding-block: .75rem; border-radius: 18px; }
+  .home .heritage__era::after { border-radius: 13px; }
+  .home .heritage__rings { width: 90%; opacity: .18; }
+  .home .heritage__milestone,
+  .home .heritage__milestone:first-child { gap: .4rem; padding: .85rem .35rem; border-radius: 13px; }
+  .home .heritage__milestone dt { justify-content: center; }
+}
+@media (max-width: 374px) {
+  .home .heritage__milestone dt { gap: .25rem; font-size: .59rem; }
+}
+html[data-motion-mode='reduced'] .home .heritage *,
+html[data-motion-mode='reduced'] .home .heritage *::before,
+html[data-motion-mode='reduced'] .home .heritage *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .home .heritage *, .home .heritage *::before, .home .heritage *::after { animation: none !important; transition: none !important; }
+}

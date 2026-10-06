@@ -36,3 +36,15 @@
 @media (max-width: 850px) { .contact-3d { height: 365px; --piece-width: 39%; --piece-height: 74%; } .contact-3d--windows { --piece-width: 51%; --piece-height: 70%; } .contact-3d--timber { --piece-width: 68%; --piece-height: 45%; } .contact-3d__seal { width: 45px; height: 45px; right: 10%; } }
 @media (max-width: 600px) { .contact-3d { height: 350px; --piece-width: 34%; } .contact-3d--windows { --piece-width: 46%; } .contact-3d--timber { --piece-width: 71%; --piece-height: 47%; } .contact-3d__seal { right: 13%; } }
 @media (prefers-reduced-motion: reduce) { .contact-3d__world { transform: none; } .contact-3d *, .contact-3d *::after { animation: none !important; transition: none !important; } }
+
+.contact-3d { border: 1px solid #ffffffa1; border-radius: 17px; box-shadow: inset 0 1px 0 #fff; }
+.contact-3d__ambient { background: radial-gradient(ellipse at var(--light-x) 25%, #fffef1eb, transparent 64%), linear-gradient(135deg, #eee4d1, #d8c9ae); }
+.contact-3d__turn { min-height: 46px; border-color: #ffffffc9; border-radius: 11px; background: linear-gradient(125deg, #fffdf1e8, #ebe0cbd9); box-shadow: inset 0 1px 0 #fff, 0 5px 12px #47382014; color: #55472f; font-size: .75rem; }
+.contact-3d__enquire { border-color: #667352; background: var(--glass-action); color: #fffbed; box-shadow: inset 0 1px 0 #ffffff4d, 0 4px 12px #26311c26; }
+.contact-3d__edition { font-size: .5625rem; color: #5f5038; }
+.contact-3d[data-scene-motion='full'] .contact-3d__arrival { animation-fill-mode: backwards; }
+@media (max-width: 600px) {
+  .contact-3d { height: clamp(305px, 89vw, 390px); border-radius: 14px; }
+  .contact-3d__controls { right: .65rem; left: .65rem; bottom: .7rem; gap: .5rem; }
+  .contact-3d__turn { padding-inline: .7rem; font-size: .75rem; }
+}

@@ -63,3 +63,24 @@
   .contact-handoff__note { margin-top: .25rem; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { .contact-handoff *, .contact-handoff *::before, .contact-handoff *::after { animation: none !important; transition: none !important; } }
+
+.contact-handoff { border-color: var(--glass-border); border-radius: 19px; background: linear-gradient(140deg, #fffdf3f0, #e4e9d8db); box-shadow: var(--glass-shadow); }
+.contact-handoff__recipient { gap: .7rem; }
+.contact-handoff__recipient > div { min-width: 0; }
+.contact-handoff__recipient strong { font-size: .9375rem; }
+.contact-handoff__recipient div > span { color: var(--glass-muted); font-size: .75rem; overflow-wrap: anywhere; }
+.contact-handoff__channel { border-color: #ffffffc9; border-radius: 8px; background: #ffffff66; font-size: .625rem; }
+.contact-handoff__eyebrow { font-size: .6875rem; line-height: 1.7; }
+.contact-handoff__copy > p:last-child { color: var(--glass-muted); font-size: .9375rem; }
+.contact-handoff__snapshot { border-color: #ffffffd9; border-radius: 12px; background: var(--glass-surface); box-shadow: inset 0 1px 0 #fff; }
+.contact-handoff__snapshot > span { font-size: .6875rem; }
+.contact-handoff__snapshot > p { color: var(--glass-muted); font-size: .8125rem; }
+.contact-handoff__person small { color: var(--glass-muted); font-size: .6875rem; }
+.contact-handoff__note { color: var(--glass-muted); font-size: .75rem; }
+.contact-handoff__actions .enquiry-back { font-size: .8125rem; }
+@media (max-width: 560px) {
+  .contact-handoff { padding: 1.1rem .9rem; }
+  .contact-handoff__recipient div > span { font-size: .75rem; }
+  .contact-handoff__open { font-size: .875rem; }
+  .contact-handoff__copy h3 { font-size: 1.9rem; }
+}
