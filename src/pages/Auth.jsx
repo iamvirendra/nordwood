@@ -158,7 +158,7 @@ function AuthExperience({ mode }) {
     } catch (error) {
       setMessage(error.message || 'We couldn’t complete that request. Please try again.');
       if (error.fields && typeof error.fields === 'object') {
-        setErrors(Object.fromEntries(Object.entries(error.fields).map(([field, value]) => [field, Array.isArray(value) ? value[0] : String(value)])));
+        setErrors(error.fields);
       }
     } finally { setBusy(false); }
   };
