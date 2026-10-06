@@ -45,6 +45,14 @@ Users, password hashes, sessions, recovery tokens, rate limits, orders, immutabl
 
 For deployment, run `npm run build`, configure `NODE_ENV=production`, `APP_ORIGIN=https://your-domain`, your database and SMTP credentials, then run `npm start` behind an HTTPS reverse proxy. The API serves `dist/` and `/api` from the same origin. Set `TRUST_PROXY_HOPS` only to the exact number of trusted proxy hops (default 0). Production cookies require HTTPS. Keep `.env` private and back up the MariaDB volume. The Vite proxy uses `PORT` (default 3001); `APP_ORIGIN` must match the browser origin.
 
+### Vercel storefront
+
+Deploy the repository root with the Vite preset. [vercel.json](vercel.json) sets the build command to `npm run build`, the output directory to `dist`, and rewrites the client routes (including `/login` and `/signup`) to `/index.html`. This lets React Router handle direct visits and page refreshes. Push this configuration to the deployed branch and deploy that new revision for the fix to take effect. This follows [Vercel's Vite SPA routing guidance](https://vercel.com/docs/frameworks/frontend/vite#using-vite-to-make-spas).
+
+The generated `/blog` and article pages retain their own HTML and SEO metadata; static assets and `/api/*` are not rewritten to the app shell. When adding a new client route, add its rewrite unless the build generates HTML for it.
+
+This configuration deploys the storefront only. Account and order features also require the Express API and MariaDB to be hosted, with same-origin `/api/*` requests forwarded to that API. The Vite development proxy does not run on Vercel. Set the API's `APP_ORIGIN` to the deployed storefront origin.
+
 ## Project shape
 
 - `src/pages/` contains the Home, Shop, Product Detail, Cart, and Contact routes.
