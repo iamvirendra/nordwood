@@ -1,6 +1,6 @@
-import { doorPricing } from './doorPricing';
-import { getImageLabel, getProductImages } from './productImages';
-import otherProducts from './other-products.json';
+import { doorPricing } from './doorPricing.js';
+import { getImageLabel, getProductImages } from './productImages.js';
+import otherProducts from './other-products.json' with { type: 'json' };
 
 // Preserve the six existing door URLs while assigning stable IDs to added sizes.
 const existingDoorIds = { '7x2.5': 1, '7x3': 2, '7x3.5': 3, '7x4': 4, '8x3': 5, '8x4': 6 };

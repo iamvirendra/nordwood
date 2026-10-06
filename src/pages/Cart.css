@@ -57,3 +57,9 @@
   .cart-container--single .cart-line-image { grid-row: span 2; height: 220px; }
   .cart-container--single .cart-line-image img { height: 190px; }
 }
+.cart-account-order { display: flex; align-items: center; justify-content: space-between; gap: 32px; border: 1px solid var(--line); background: var(--surface-muted); padding: clamp(24px, 4vw, 46px); margin: 40px 0; }
+.cart-account-order h2 { font: 400 clamp(1.7rem, 3vw, 2.2rem)/1.2 var(--serif); margin: 12px 0; }
+.cart-account-order p:not(.eyebrow) { color: var(--muted); font-size: .83rem; max-width: 460px; }
+.cart-account-order > a { display: inline-flex; justify-content: space-between; align-items: center; gap: 30px; background: var(--forest-deep); color: var(--paper); padding: 18px 24px; font-size: .8rem; flex-shrink: 0; transition: background .2s; }
+.cart-account-order > a:hover { background: var(--accent-ink); }
+@media (max-width: 700px) { .cart-account-order { align-items: stretch; flex-direction: column; } }

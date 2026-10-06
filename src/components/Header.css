@@ -67,6 +67,10 @@
 .header .nav-link:focus-visible::after,
 .header .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
 .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+.header-account { display: inline-flex; align-items: center; gap: .5rem; min-width: 40px; min-height: 44px; justify-content: center; color: var(--ink-soft); font-size: .72rem; white-space: nowrap; }
+.header-account:hover, .header-account.active { color: var(--accent-ink); }
+.header .nav-account-mobile { display: none; }
+@media (max-width: 1280px) { .header-account > span { display: none; } .header-actions { gap: .65rem; } }
 .hamburger {
   display: none;
   width: 44px;
@@ -113,7 +117,8 @@
     background: var(--paper, #f4f0e6);
     transition: max-height .3s ease, border-color .3s ease;
   }
-  .header .nav.open { max-height: 19rem; visibility: visible; border-bottom-color: color-mix(in srgb, var(--accent-ink) 30%, transparent); }
+  .header .nav.open { max-height: 27rem; visibility: visible; border-bottom-color: color-mix(in srgb, var(--accent-ink) 30%, transparent); }
+  .header .nav-account-mobile { display: inline-flex; }
   .header .nav-link { min-height: 54px; padding: 1rem 1.4rem; border-top: 1px solid var(--line); }
   .header .nav-link::after { top: 17px; bottom: 17px; left: 0; right: auto; width: 2px; height: auto; transform: scaleY(0); }
   .header .nav-link:hover::after,
@@ -121,6 +126,7 @@
   .header .nav-link.active::after { transform: scaleY(1); }
   .header .nav-link:focus-visible { outline-offset: -5px; }
   .header-actions { grid-column: 3; grid-row: 1; }
+  .header-account { display: none; }
   .logo-image { width: 3.75rem; height: 3.75rem; flex-basis: 3.75rem; margin-inline: -.5rem; }
   .logo-name { --wordmark-width: clamp(112px, calc(100vw - 304px), 128px); }
   .logo-tagline { display: none; }

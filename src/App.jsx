@@ -9,6 +9,12 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import BlogDetail from './pages/BlogDetail';
 import Cart from './pages/Cart';
+import Auth from './pages/Auth';
+import Account from './pages/Account';
+import Admin from './pages/Admin';
+import Checkout from './pages/Checkout';
+import { AuthProvider } from './auth/AuthContext';
+import ProtectedRoute from './auth/ProtectedRoute';
 import { products } from './data/products';
 import MotionProvider from './motion/MotionProvider';
 import MotionEffects from './motion/MotionEffects';
@@ -86,7 +92,7 @@ export default function App() {
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <MotionProvider><Router>
+    <MotionProvider><Router><AuthProvider>
       <RouteScroll />
       <div className="app">
         <Header cartCount={cartCount} />
@@ -98,6 +104,13 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/login" element={<Auth mode="login" />} />
+            <Route path="/signup" element={<Auth mode="signup" />} />
+            <Route path="/forgot-password" element={<Auth mode="forgot-password" />} />
+            <Route path="/reset-password" element={<Auth mode="reset-password" />} />
+            <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute role="admin"><Admin /></ProtectedRoute>} />
+            <Route path="/checkout" element={<ProtectedRoute><Checkout cartItems={cartItems} onClearCart={handleClearCart} /></ProtectedRoute>} />
             <Route 
               path="/cart" 
               element={
@@ -115,6 +128,6 @@ export default function App() {
         <Footer />
         <MotionEffects />
       </div>
-    </Router></MotionProvider>
+    </AuthProvider></Router></MotionProvider>
   );
 }

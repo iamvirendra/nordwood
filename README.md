@@ -6,10 +6,44 @@ Premium made-to-size woodwork for doors, frames, and windows.
 
 ```bash
 npm install
+npm run setup:local
+npm run db:up
 npm run dev
 ```
 
-Open `http://localhost:5173/` in a browser.
+Requires Node.js 22.12+ and Docker Desktop. Open `http://localhost:5173/` in a browser. `npm run dev` starts both Vite and the API. MariaDB runs on localhost:3310 with a persistent Docker volume; `setup:local` generates random credentials in the ignored `.env` file and never overwrites an existing configuration. The API applies schema migrations at startup.
+
+## Accounts and administration
+
+- `/signup` creates a customer account and signs them in. `/login` supports remembered sessions.
+- `/account` shows the customer's orders and password settings.
+- The bag leads to `/checkout`, which saves an order request, delivery details and catalogue-priced items in MariaDB. Product subtotals exclude GST/delivery; no online payment is collected. The existing WhatsApp enquiry flow remains available.
+- `/admin` is accessible only to administrators. It includes customer/contact details, delivery addresses, product details, search, status filters, pagination and status management.
+- Orders progress through pending → confirmed → in production → ready → completed, or may be cancelled before completion. Changes are recorded in an audit table.
+
+Create your administrator with the interactive prompt (password input is hidden):
+
+```bash
+npm run admin:create
+```
+
+Alternatively, promote an existing registered account:
+
+```bash
+npm run admin:create -- --promote your-email@example.com
+```
+
+Then sign in again. There is no public role selector or default administrator password. For unattended creation, inject `ADMIN_NAME`, `ADMIN_EMAIL` and `ADMIN_PASSWORD` through your secret manager.
+
+Password recovery at `/forgot-password` requires `SMTP_HOST`, `SMTP_FROM` and your provider's SMTP settings in `.env`. Reset links expire after 30 minutes, work once and revoke existing sessions. Without SMTP, the form clearly reports that recovery is unavailable. See [.env.example](.env.example) for configuration.
+
+## Database and deployment
+
+Users, password hashes, sessions, recovery tokens, rate limits, orders, immutable item/price snapshots and status history are stored in MariaDB. Passwords use salted scrypt hashes; session/reset secrets are stored as hashes. HttpOnly cookies, CSRF tokens, origin checks, parameterized queries, transactional checkout and server-side role/ownership checks protect the API. Account tokens are not saved to browser storage.
+
+`npm run db:down` stops the database without deleting its volume. Existing MariaDB servers can be used by changing the `DB_*` variables and creating the configured database/user with schema permissions. `npm run db:migrate` applies the schema explicitly.
+
+For deployment, run `npm run build`, configure `NODE_ENV=production`, `APP_ORIGIN=https://your-domain`, your database and SMTP credentials, then run `npm start` behind an HTTPS reverse proxy. The API serves `dist/` and `/api` from the same origin. Set `TRUST_PROXY_HOPS` only to the exact number of trusted proxy hops (default 0). Production cookies require HTTPS. Keep `.env` private and back up the MariaDB volume. The Vite proxy uses `PORT` (default 3001); `APP_ORIGIN` must match the browser origin.
 
 ## Project shape
 
@@ -32,7 +66,19 @@ npm run lint
 npm run check:images
 npm run build
 npm run check:seo
+npm test
 ```
+
+Run database-backed integration and real browser checks in dedicated test databases:
+
+```bash
+npm run db:test:setup
+TEST_DB_NAME=nordwood_test npm run test:server
+npx playwright install chromium
+npm run test:e2e
+```
+
+Integration tests clear only the explicitly named database ending in `_test`; never point them at real customer data. Browser tests start isolated API/Vite servers on ports 3002/5180 and use `nordwood_e2e_test`. `npm test` runs unit/regression tests and skips the database integration suite unless `TEST_DB_NAME` is set.
 
 ## Sitemap
 
@@ -42,4 +88,4 @@ The generated [public/sitemap.xml](public/sitemap.xml) contains the homepage, sh
 
 URLs share the site's `VITE_SITE_URL` configuration (default `https://www.nordwood.in`). Set it consistently for builds and SEO checks if the live domain changes. Sitemap generation uses real catalogue and article data and does not invent modification dates. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
 
-The storefront uses React, React Router, Vite, and CSS. Cart contents persist in `localStorage`; checkout and form submission still require a backend integration.
+The storefront uses React, React Router, Vite, and CSS, with an Express API and MariaDB. Cart selections persist in `localStorage`; submitted order requests and account data persist in MariaDB.

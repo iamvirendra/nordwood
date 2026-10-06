@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import CartOrderEnquiry from '../components/CartOrderEnquiry';
 import { createCartEnquiry, formatCartPrice } from '../components/cartEnquiryUtils';
+import { useAuth } from '../auth/context';
 import './Cart.css';
 
 export default function Cart({ cartItems, onRemoveFromCart, onUpdateQuantity, onClearCart }) {
+  const { user } = useAuth();
   const formatPrice = formatCartPrice;
   const enquiry = createCartEnquiry(cartItems);
   const subtotal = enquiry?.subtotal || 0;
@@ -24,6 +26,7 @@ export default function Cart({ cartItems, onRemoveFromCart, onUpdateQuantity, on
       </section>
       <aside className="cart-summary" data-motion="rise"><p className="eyebrow">The details</p><h2>Order summary</h2><div className="summary-item"><span>{itemCount} item{itemCount !== 1 ? 's' : ''}</span><span>{formatPrice(subtotal)}</span></div><div className="summary-item"><span>GST</span><span>Extra</span></div><div className="summary-item"><span>Delivery</span><span>Confirmed with your order</span></div><div className="summary-total"><span>Subtotal</span><strong key={subtotal}>{formatPrice(subtotal)}</strong></div><p className="summary-note">Excludes GST and delivery. Our team will confirm the final amount and arrangements for your order.</p><Link to="/contact" className="cart-contact">Need help choosing a size?</Link></aside>
     </div>
+    <section className="cart-account-order" data-motion="rise"><div><p className="eyebrow">A place for every detail</p><h2>Your selection. Saved with us.</h2><p>Submit an order request and follow its progress in your account. Our team will confirm the final quote.</p></div><Link to={user ? '/checkout' : '/login?redirect=%2Fcheckout'}>{user ? 'Request an order' : 'Sign in to request an order'} <span aria-hidden="true">↗</span></Link></section>
     <CartOrderEnquiry key={enquiry.body} enquiry={enquiry} />
   </div>;
 }

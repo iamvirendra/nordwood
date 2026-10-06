@@ -10,3 +10,10 @@
   flex: 1;
   background: var(--paper);
 }
+.route-state { max-width: 700px; padding: 90px 24px; text-align: center; margin: auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.route-state h1 { font: 400 clamp(2rem, 4vw, 3rem)/1.2 var(--serif); }
+.route-state > p:not(.eyebrow) { color: var(--muted); }
+.route-state button, .route-state a { background: var(--forest-deep); padding: 14px 24px; color: var(--paper); font-size: .82rem; }
+.route-state__loader { width: 28px; height: 28px; border: 1px solid var(--line); border-top-color: var(--accent-ink); border-radius: 50%; }
+@media (prefers-reduced-motion: no-preference) { html:not([data-motion-mode='reduced']) .route-state__loader { animation: route-state-spin 1s linear infinite; } }
+@keyframes route-state-spin { to { transform: rotate(360deg); } }

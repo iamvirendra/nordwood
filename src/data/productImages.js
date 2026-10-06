@@ -1,4 +1,4 @@
-import suppliedImages from './suppliedImages.json';
+import suppliedImages from './suppliedImages.json' with { type: 'json' };
 
 // Folder labels establish a design category or material, not an exact priced SKU.
 // Keep missing categories on their existing illustration instead of guessing.
